@@ -1,4 +1,4 @@
 #!/bin/sh
 DIR=$(dirname -- $0)
-chown srcds:$USER -R $DIR/
+chown srcds -R $DIR/
 exec runuser -u srcds "$@" 
