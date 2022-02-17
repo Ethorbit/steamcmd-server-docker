@@ -9,6 +9,7 @@ DIR=$(dirname -- $0)
 if [ ! -f "$DIR/server/srcds_start.sh" ]; then
 	echo -e "#!/bin/sh\n" >> $DIR/server/srcds_start.sh
 	echo "\"$DIR/server/srcds_run\" $SRCDS_RUN_ARGS" >> $DIR/server/srcds_start.sh
+	chmod +x "$DIR/server/srcds_start.sh"
 fi
 
 exec $DIR/server/srcds_start.sh
