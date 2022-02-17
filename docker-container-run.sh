@@ -1,8 +1,6 @@
 #!/bin/sh
 DIR=$(dirname -- $0)
 
-echo "Testing user: $USER, u: $(id -u $USER) g: $(id -g $USER)"		
-
 if [ ! -f "$DIR/server/update.sh" ]; then
 	echo "#!/bin/sh" >> $DIR/server/update.sh
 	echo "steamcmd +force_install_dir \"$DIR/server\" +login anonymous +app_update $SRCDS_APPID validate +exit" >> "$DIR/server/update.sh"
