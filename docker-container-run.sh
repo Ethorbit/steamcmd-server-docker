@@ -15,5 +15,5 @@ if [ ! -f "$DIR/server/start.sh" ]; then
 fi
 
 echo "Starting server..."
-"$DIR/server/update.sh"
+#"$DIR/server/update.sh"
 "$DIR/server/start.sh"
