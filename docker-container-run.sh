@@ -14,12 +14,11 @@ if [ ! -f "$DIR/server/start.sh" ]; then
 fi
 
 if [[ $SRCDS_AUTOUPDATE -ne 0 ]]; then
-	echo "Starting server..."
-	echo "Checking for updates or missing files.."
+	echo "Starting server... (Checking for updates or missing files in the background)"
 	"$DIR/server/update.sh" & "$DIR/server/start.sh"
 else
 	if [[ $SRCDS_UPDATE -eq 1 ]]; then
-		echo "Updating server and checking for missing files..."
+		echo "Checking for updates or missing files..."
 		"$DIR/server/update.sh"
 		echo "Starting server..."
 		"$DIR/server/start.sh"
