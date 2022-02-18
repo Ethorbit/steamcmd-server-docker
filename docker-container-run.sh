@@ -12,10 +12,12 @@ if [ ! -f "$DIR/server/update.sh" ]; then
 	chmod +x "$DIR/server/update.sh"
 fi
 
-echo "" > "$DIR/server/start.sh"
-echo "#!/bin/sh" >> "$DIR/server/start.sh"
-echo "\"$DIR/server/srcds_run\" $SRCDS_RUN_ARGS" >> "$DIR/server/start.sh"
-chmod +x "$DIR/server/start.sh"
+if [ ! -z $SRCDS_RUN_ARGS ]; then
+	rm "$DIR/server/start.sh"
+	echo "#!/bin/sh" >> "$DIR/server/start.sh"
+	echo "\"$DIR/server/srcds_run\" $SRCDS_RUN_ARGS" >> "$DIR/server/start.sh"
+	chmod +x "$DIR/server/start.sh"
+fi
 
 if [ -z $SRCDS_AUTOUPDATE ]; then
 	SRCDS_AUTOUPDATE=1
