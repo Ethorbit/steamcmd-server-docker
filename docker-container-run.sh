@@ -23,7 +23,7 @@ fi
 
 if [ "$SRCDS_AUTOUPDATE" != "0" ]; then
 	echo "Starting server... (Checking for updates and validating files in the background)"
-	#"$DIR/server/start.sh" & nohup "$DIR/server/update.sh" > /dev/null
+	"$DIR/server/start.sh" & nohup "$DIR/server/update.sh" > /dev/null
 else
 	if [ "$SRCDS_UPDATE" = "1" ]; then
 		echo "Checking for updates and validating files..."
