@@ -22,11 +22,11 @@ if [ -z $SRCDS_UPDATE ]; then # Manual update is off by default (duh)
 fi
 
 if [ "$SRCDS_AUTOUPDATE" != "0" ]; then
-	echo "Starting server... (Checking for updates/missing files in the background)"
-	"$DIR/server/update.sh" > /dev/null & "$DIR/server/start.sh"
+	echo "Starting server... (Checking for updates and validating files in the background)"
+	"$DIR/server/update.sh" & "$DIR/server/start.sh"
 else
 	if [ "$SRCDS_UPDATE" = "1" ]; then
-		echo "Checking for updates or missing files..."
+		echo "Checking for updates and validating files..."
 		"$DIR/server/update.sh"
 		echo "Starting server..."
 		"$DIR/server/start.sh"
