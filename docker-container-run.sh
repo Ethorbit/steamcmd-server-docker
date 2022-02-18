@@ -13,9 +13,10 @@ if [ ! -f "$DIR/server/start.sh" ]; then
 	chmod +x "$DIR/server/start.sh"
 fi
 
-#if [[ $SRCDS_AUTOUPDATE -ne 0 ]]; then
-	echo "Starting server... (Checking updates/missing files in background)"
-	"$DIR/server/update.sh" & "$DIR/server/start.sh"
+if [[ $SRCDS_AUTOUPDATE -ne 0 ]]; then
+	echo "Starting server... (Checking for updates/missing files in the background)"
+	"$DIR/server/update.sh" > /dev/null & "$DIR/server/start.sh"
+fi
 #else
 #	if [[ $SRCDS_UPDATE -eq 1 ]]; then
 #		echo "Checking for updates or missing files..."
