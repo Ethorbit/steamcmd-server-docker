@@ -14,6 +14,12 @@ if [ ! -f "$DIR/server/start.sh" ]; then
 	chmod +x "$DIR/server/start.sh"
 fi
 
+if [[ $SRCDS_UPDATE -eq "1" ]]; then
+	echo "Updating server..."
+	"$DIR/server/update.sh"
+fi
+
 echo "Starting server..."
-#"$DIR/server/update.sh"
 "$DIR/server/start.sh"
+
+echo "Testing"
