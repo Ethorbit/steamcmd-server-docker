@@ -14,7 +14,7 @@ if [ ! -f "$DIR/server/start.sh" ]; then
 fi
 
 if [ $SRCDS_AUTOUPDATE -eq "0" ]; then
-	echo "Hello?"
+	echo "Starting server... (Checking for updates/missing files in the background)"
 fi
 
 #if [ "$SRCDS_AUTOUPDATE" -eq "0" ]; then
