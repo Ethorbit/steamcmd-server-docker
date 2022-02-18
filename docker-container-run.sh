@@ -13,7 +13,8 @@ if [ ! -f "$DIR/server/start.sh" ]; then
 	chmod +x "$DIR/server/start.sh"
 fi
 
-if [[ "$SRCDS_AUTOUPDATE" -eq "0" ]]; then
+#if [ "$SRCDS_AUTOUPDATE" -eq "0" ]; then
+if [ ! -f "$DIR/server/start.sh" ]; then
 	echo "Starting server... (Checking for updates/missing files in the background)"
 	#"$DIR/server/update.sh" > /dev/null & "$DIR/server/start.sh"
 fi
