@@ -2,6 +2,8 @@
 DIR="/home/srcds"
 
 if [ ! -f "$DIR/server/update.sh" ]; then
+	echo "Testing.."
+
 	if [ -z $SRCDS_APPID ]; then
 		echo "Can't install! No App ID specified!"
 		exit
@@ -12,12 +14,10 @@ if [ ! -f "$DIR/server/update.sh" ]; then
 	chmod +x "$DIR/server/update.sh"
 fi
 
-#if [ ! -f "$DIR/server/start.sh" ]; then
-	echo "" > "$DIR/server/start.sh"
-	echo "#!/bin/sh" >> "$DIR/server/start.sh"
-	echo "\"$DIR/server/srcds_run\" $SRCDS_RUN_ARGS" >> "$DIR/server/start.sh"
-	chmod +x "$DIR/server/start.sh"
-#fi
+echo "" > "$DIR/server/start.sh"
+echo "#!/bin/sh" >> "$DIR/server/start.sh"
+echo "\"$DIR/server/srcds_run\" $SRCDS_RUN_ARGS" >> "$DIR/server/start.sh"
+chmod +x "$DIR/server/start.sh"
 
 if [ -z $SRCDS_AUTOUPDATE ]; then
 	SRCDS_AUTOUPDATE=1
