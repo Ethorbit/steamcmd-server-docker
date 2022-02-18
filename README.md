@@ -14,7 +14,7 @@ The server updates in the background after it launches, if it becomes outdated; 
 * Creating a Garry's Mod server
 ```docker run -it --env SRCDS_APPID=4020 --name "my-gmod-server" ethorbit/srcds-server:latest```
 
-* Creating a Garry's Mod server under my host user and mounting it somewhere in my home directory
+* Creating a Garry's Mod server that runs as my host user and mounting it somewhere in my home directory
 ```docker run -it -v /home/ethorbit/Servers/my-gmod-server:/home/srcds/server --env SRCDS_APPID=4020 --env USER_ID=1000 --env GROUP_ID=1000 --name "my-gmod-server" ethorbit/srcds-server:latest```
 
 ## Environment Variables
