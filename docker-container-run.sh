@@ -2,8 +2,6 @@
 DIR="/home/srcds"
 
 if [ ! -f "$DIR/server/update.sh" ]; then
-	echo "Testing.."
-
 	if [ -z $SRCDS_APPID ]; then
 		echo "Can't install! No App ID specified!"
 		exit
