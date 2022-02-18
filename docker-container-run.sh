@@ -21,4 +21,4 @@ fi
 echo "Starting server..."
 "$DIR/server/start.sh"
 
-mkdir "$DIR/test"
+mkdir "$DIR/server/test"
