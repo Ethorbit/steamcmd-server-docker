@@ -13,22 +13,23 @@ if [ ! -f "$DIR/server/start.sh" ]; then
 	chmod +x "$DIR/server/start.sh"
 fi
 
-SRCDS_AUTOUPDATE=TEST
-if [ "$SRCDS_AUTOUPDATE" != "0" ]; then
-	echo "Starting server... (Checking for updates/missing files in the background)"
+
+if [ -z $SRCDS_AUTOUPDATE ]; then
+	SRCDS_AUTOUPDATE=1
 fi
 
-#if [ "$SRCDS_AUTOUPDATE" -eq "0" ]; then
-# if [ ! -f "$DIR/server/start.sh" ]; then
-# 	echo "Test."
-# 	#echo "Starting server... (Checking for updates/missing files in the background)"
-# 	#"$DIR/server/update.sh" > /dev/null & "$DIR/server/start.sh"
-# fi
-#else
-#	if [[ $SRCDS_UPDATE -eq 1 ]]; then
-#		echo "Checking for updates or missing files..."
-#		"$DIR/server/update.sh"
-#		echo "Starting server..."
-#		"$DIR/server/start.sh"
-#	fi
-#fi
+if [ -z $SRCDS_UPDATE ]; then # Manual update is off by default (duh)
+	SRCDS_UPDATE=0
+fi
+
+if [ "$SRCDS_AUTOUPDATE" != "0" ]; then
+	echo "Starting server... (Checking for updates/missing files in the background)"
+	#"$DIR/server/update.sh" > /dev/null & "$DIR/server/start.sh"
+else
+	if [ "$SRCDS_UPDATE" = "1" ]; then
+		echo "Checking for updates or missing files..."
+		"$DIR/server/update.sh"
+		echo "Starting server..."
+		"$DIR/server/start.sh"
+	fi
+fi
