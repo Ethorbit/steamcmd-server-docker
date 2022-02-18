@@ -1,6 +1,4 @@
 FROM steamcmd/steamcmd:alpine
-ENV SRCDS_APPID="4020"
-ENV SRCDS_RUN_ARGS='-tickrate 66 +rcon_password "password" +gamemode "sandbox" +map "gm_construct"'
 WORKDIR /home/srcds/
 RUN apk update &&\
     apk add runuser shadow libgcc &&\
