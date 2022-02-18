@@ -1,5 +1,5 @@
 #!/bin/sh
-DIR="/home/srcds/"
+DIR="/home/srcds"
 echo "Testing user: $USER, u: $(id -u $USER) g: $(id -g $USER)"
 
 if [ ! -f "$DIR/server/update.sh" ]; then
