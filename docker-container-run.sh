@@ -1,6 +1,5 @@
 #!/bin/sh
 DIR="/home/srcds"
-echo "Testing user: $USER, u: $(id -u $USER) g: $(id -g $USER)"
 
 if [ ! -f "$DIR/server/update.sh" ]; then
 	echo "#!/bin/sh" >> $DIR/server/update.sh
@@ -22,4 +21,4 @@ fi
 echo "Starting server..."
 "$DIR/server/start.sh"
 
-echo "Testing"
+mkdir "$DIR/test"
