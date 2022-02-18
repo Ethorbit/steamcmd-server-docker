@@ -2,6 +2,11 @@
 DIR="/home/srcds"
 
 if [ ! -f "$DIR/server/update.sh" ]; then
+	if [ -z $SRCDS_APPID ]; then
+		echo "Can't install! No App ID specified!"
+		exit
+	fi
+
 	echo "#!/bin/sh" >> $DIR/server/update.sh
 	echo "steamcmd +force_install_dir \"$DIR/server\" +login anonymous +app_update $SRCDS_APPID validate +exit" >> "$DIR/server/update.sh"
 	chmod +x "$DIR/server/update.sh"
