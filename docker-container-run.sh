@@ -27,14 +27,19 @@ if [ -z "$SRCDS_UPDATE" ]; then # Manual update is off by default (duh)
 	SRCDS_UPDATE=0
 fi
 
-if [ "$SRCDS_AUTOUPDATE" != "0" ]; then
-	echo "Starting server... (Checking for updates and validating files in the background)"
-	"$DIR/server/start.sh" & nohup "$DIR/server/update.sh" > /dev/null
+if [ ! -f "$DIR/server/srcds_run" ]; then
+	echo "Installing server..."
+	"$DIR/server/update.sh"
 else
-	if [ "$SRCDS_UPDATE" = "1" ]; then
-		echo "Checking for updates and validating files..."
-		"$DIR/server/update.sh"
-		echo "Starting server..."
-		"$DIR/server/start.sh"
+	if [ "$SRCDS_AUTOUPDATE" != "0" ]; then
+		echo "Starting server... (Checking for updates and validating files in the background)"
+		"$DIR/server/start.sh" & nohup "$DIR/server/update.sh" > /dev/null
+	else
+		if [ "$SRCDS_UPDATE" = "1" ]; then
+			echo "Checking for updates and validating files..."
+			"$DIR/server/update.sh"
+			echo "Starting server..."
+			"$DIR/server/start.sh"
+		fi
 	fi
 fi
