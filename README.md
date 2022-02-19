@@ -34,7 +34,7 @@ The user and group ids that the docker container will run under. If you plan to 
 
 * `SRCDS_AUTOUPDATE`
 
-This will update and validate files in the background when the server is started; it's on by default.
+This will update and validate files in the background when the server is started; it's on by default. To disable: set to 0.
 
 * `SRCDS_UPDATE`
 
