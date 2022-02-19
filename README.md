@@ -1,3 +1,5 @@
+[![build](https://github.com/Ethorbit/Docker-Srcds/actions/workflows/docker-image.yml/badge.svg)](https://github.com/Ethorbit/Docker-Srcds/actions/workflows/docker-image.yml)
+
 # Docker-Srcds
 A docker image that installs and runs an srcds server for the specified game.
 
