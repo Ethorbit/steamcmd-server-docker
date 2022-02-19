@@ -11,7 +11,7 @@ The server updates in the background after it launches, if it becomes outdated: 
 
 ## Examples
 * Creating a Garry's Mod server
-```docker run -dit --env SRCDS_APPID=4020 --network host --name "my-gmod-server" ethorbit/srcds-server:latest```
+```docker run -it --env SRCDS_APPID=4020 --network host --name "my-gmod-server" ethorbit/srcds-server:latest```
 
 * Creating a Garry's Mod server with run args
 ```docker run -dit --env SRCDS_APPID=4020 --env SRCDS_RUN_ARGS='-tickrate 66 +gamemode "sandbox" +map "gm_construct"' --network host --name "my-gmod-server" ethorbit/srcds-server:latest```
