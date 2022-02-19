@@ -8,7 +8,7 @@ A docker image that installs and runs an srcds server for the specified game.
 It not only installs the server you want, but also simultaneously updates, validates files, and runs it on container start. All files are created at runtime, meaning you can mount the container to the host filesystem and easily manage the server there. See examples below.
 
 ### How do the auto updates work?
-The server updates in the background after it launches, if it becomes outdated; simply restart it.
+The server updates in the background after it launches, if it becomes outdated: simply restart it.
 
 ## Examples
 * Creating a Garry's Mod server
@@ -38,4 +38,4 @@ This will update and validate files in the background when the server is started
 
 * `SRCDS_UPDATE`
 
-This is only useful if you have `SRCDS_AUTOUPDATE` set to 0. Having this option set to 1 means when the container runs; an update and file validation process will take place, and the server won't start until it's done.
+This is only useful if you have `SRCDS_AUTOUPDATE` set to 0. Having this option set to 1 means when the container runs: an update and file validation process will take place, and the server won't start until it's done.
