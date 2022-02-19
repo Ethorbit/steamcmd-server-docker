@@ -57,13 +57,13 @@ update_and_start_server()
 }
 
 if [ ! -f "$DIR/server/srcds_run" ]; then
-	install_server()
+	install_server
 else
 	if [ "$SRCDS_AUTOUPDATE" != "0" ]; then
-		start_server_and_update()
+		start_server_and_update
 	else
 		if [ "$SRCDS_UPDATE" = "1" ]; then
-			update_and_start_server()
+			update_and_start_server
 		fi
 	fi
 fi
