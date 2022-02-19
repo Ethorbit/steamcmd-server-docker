@@ -22,7 +22,7 @@ The server updates in the background after it launches, if it becomes outdated; 
 
 This is the Steam game's appid that you want srcds to install. (See https://developer.valvesoftware.com/wiki/Steam_Application_IDs)
 <br></br>
-This can only be used on the first launch, but if you mount the container; you can modify the generated install.sh script.
+This can only be used on the first launch, but if you mount the container, you can modify the generated install.sh script.
 
 * `SRCDS_RUN_ARGS`
 
@@ -31,3 +31,11 @@ This represents the properties of your server (map, rcon password, etc) to apply
 * `USER_ID` `GROUP_ID`
 
 The user and group ids that the docker container will run under. If you plan to mount the container to your system, you'll want this to match the user you plan to modify the files on (so that there's no permission issues)
+
+* `SRCDS_AUTOUPDATE`
+
+This will update and validate files in the background when the server is started; it's on by default.
+
+* `SRCDS_UPDATE`
+
+This is only useful if you have `SRCDS_AUTOUPDATE` set to 0. Having this option set to 1 means when the container runs; an update and file validation process will take place, and the server won't start until it's done.
