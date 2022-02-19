@@ -30,15 +30,15 @@ if [ -z "$SRCDS_UPDATE" ]; then # Manual update is off by default (duh)
 	SRCDS_UPDATE=0
 fi
 
+start_server {
+	echo "Starting server..."
+	"$START_SCRIPT"
+}
+
 install_server {
 	echo "Installing server..."
 	"$INSTALL_SCRIPT"
 	start_server
-}
-
-start_server {
-	echo "Starting server..."
-	"$START_SCRIPT"
 }
 
 start_server_while_updating {
