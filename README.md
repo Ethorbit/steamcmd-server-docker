@@ -26,7 +26,7 @@ This can only be used on the first launch, but if you mount the container, you c
 
 * `SRCDS_RUN_ARGS`
 
-This represents the properties of your server (map, rcon password, etc) to apply when starting the server. (See https://developer.valvesoftware.com/wiki/Command_Line_Options)
+These are the command line options (launch options and server commands) to run the server with, which contain: map, tick rate, rcon password, etc. (See https://developer.valvesoftware.com/wiki/Command_Line_Options)
 
 * `USER_ID` `GROUP_ID`
 
