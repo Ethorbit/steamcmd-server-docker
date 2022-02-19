@@ -1,6 +1,3 @@
-# WIP
-This is currently being developed, **DO NOT** create server containers with it yet.
-
 # Docker-Srcds
 A docker image that installs and runs an srcds server for the specified game.
 
