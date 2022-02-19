@@ -42,9 +42,8 @@ function install_server {
 }
 
 function start_server_while_updating {
-	start_server
-	#echo "Starting server... (Checking for updates and validating files in the background)"
-	#"$START_SCRIPT" & nohup "$UPDATE_SCRIPT" > /dev/null
+	echo "Starting server... (Checking for updates and validating files in the background)"
+	nohup "$UPDATE_SCRIPT" > /dev/null & "$START_SCRIPT"
 }
 
 function update_and_start_server {
