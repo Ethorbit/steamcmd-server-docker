@@ -30,23 +30,23 @@ if [ -z "$SRCDS_UPDATE" ]; then # Manual update is off by default (duh)
 	SRCDS_UPDATE=0
 fi
 
-start_server {
+function start_server {
 	echo "Starting server..."
 	"$START_SCRIPT"
 }
 
-install_server {
+function install_server {
 	echo "Installing server..."
 	"$INSTALL_SCRIPT"
 	start_server
 }
 
-start_server_while_updating {
+function start_server_while_updating {
 	echo "Starting server... (Checking for updates and validating files in the background)"
 	"$START_SCRIPT" & nohup "$UPDATE_SCRIPT" > /dev/null
 }
 
-update_and_start_server {
+function update_and_start_server {
 	echo "Checking for updates and validating files..."
 	"$UPDATE_SCRIPT"
 	start_server
