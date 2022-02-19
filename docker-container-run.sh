@@ -1,7 +1,7 @@
 #!/bin/sh
 DIR="/home/srcds"
 UPDATE_SCRIPT="$DIR/server/update.sh"
-INSTALL_SCRIPT=$UPDATE_SCRIPT
+INSTALL_SCRIPT="$UPDATE_SCRIPT"
 START_SCRIPT="$DIR/server/start.sh"
 
 if [ ! -f "$DIR/server/update.sh" ]; then
