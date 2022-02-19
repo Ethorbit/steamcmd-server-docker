@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 DIR="/home/srcds"
 UPDATE_SCRIPT="$DIR/server/update.sh"
 INSTALL_SCRIPT="$UPDATE_SCRIPT"
