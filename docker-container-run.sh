@@ -1,5 +1,8 @@
 #!/bin/sh
 DIR="/home/srcds"
+UPDATE_SCRIPT="$DIR/server/update.sh"
+INSTALL_SCRIPT=$UPDATE_SCRIPT
+START_SCRIPT="$DIR/server/start.sh"
 
 if [ ! -f "$DIR/server/update.sh" ]; then
 	if [ -z "$SRCDS_APPID" ]; then
@@ -27,19 +30,25 @@ if [ -z "$SRCDS_UPDATE" ]; then # Manual update is off by default (duh)
 	SRCDS_UPDATE=0
 fi
 
+start_server()
+{
+	echo "Starting server..."
+	"$START_SCRIPT"
+}
+
 if [ ! -f "$DIR/server/srcds_run" ]; then
 	echo "Installing server..."
-	"$DIR/server/update.sh"
+	"$INSTALL_SCRIPT"
+	start_server
 else
 	if [ "$SRCDS_AUTOUPDATE" != "0" ]; then
 		echo "Starting server... (Checking for updates and validating files in the background)"
-		"$DIR/server/start.sh" & nohup "$DIR/server/update.sh" > /dev/null
+		"$START_SCRIPT" & nohup "$UPDATE_SCRIPT" > /dev/null
 	else
 		if [ "$SRCDS_UPDATE" = "1" ]; then
 			echo "Checking for updates and validating files..."
-			"$DIR/server/update.sh"
-			echo "Starting server..."
-			"$DIR/server/start.sh"
+			"$UPDATE_SCRIPT"
+			start_server
 		fi
 	fi
 fi
