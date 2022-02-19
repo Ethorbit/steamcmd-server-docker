@@ -5,7 +5,7 @@ This is currently being developed, **DO NOT** create server containers with it y
 A docker image that installs and runs an srcds server for the specified game.
 
 ### What's different about this than the others?
-It not only installs the server you want, but also simultaneously updates, validates files, and runs on container start. All files are created at runtime, meaning you can mount the container to the host filesystem and easily manage the server there. See examples below.
+It not only installs the server you want, but also simultaneously updates, validates files, and runs on container start. All files are created at runtime, meaning you can mount the container to the host filesystem and easily manage the server there. (See examples below)
 
 There's also full terminal interactivity support, for example: if you press hotkey combos like Ctrl+l; it will be processed properly. This is because all the required libraries are present, unlike with other installs.
 
