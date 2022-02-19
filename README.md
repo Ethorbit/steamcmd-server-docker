@@ -14,10 +14,10 @@ The server updates in the background after it launches, if it becomes outdated: 
 ```docker run -it --env SRCDS_APPID=4020 --network host --name "my-gmod-server" ethorbit/srcds-server:latest```
 
 * Creating a Garry's Mod server with run args
-```docker run -dit --env SRCDS_APPID=4020 --env SRCDS_RUN_ARGS='-tickrate 66 +gamemode "sandbox" +map "gm_construct"' --network host --name "my-gmod-server" ethorbit/srcds-server:latest```
+```docker run -it --env SRCDS_APPID=4020 --env SRCDS_RUN_ARGS='-tickrate 66 +gamemode "sandbox" +map "gm_construct"' --network host --name "my-gmod-server" ethorbit/srcds-server:latest```
 
 * Creating a Garry's Mod server with run args which runs as my host user and mounting it somewhere in my home directory
-```docker run -dit -v /home/ethorbit/Servers/my-gmod-server:/home/srcds/server --env SRCDS_APPID=4020 --env SRCDS_RUN_ARGS='-tickrate 66 +rcon_password "mypass" +gamemode "sandbox" +map "gm_flatgrass"' --env USER_ID=1000 --env GROUP_ID=1000 --network host --name "my-gmod-server" ethorbit/srcds-server:latest```
+```docker run -it -v /home/ethorbit/Servers/my-gmod-server:/home/srcds/server --env SRCDS_APPID=4020 --env SRCDS_RUN_ARGS='-tickrate 66 +rcon_password "mypass" +gamemode "sandbox" +map "gm_flatgrass"' --env USER_ID=1000 --env GROUP_ID=1000 --network host --name "my-gmod-server" ethorbit/srcds-server:latest```
 
 ## Environment Variables
 * `SRCDS_APPID`
