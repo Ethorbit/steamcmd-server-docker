@@ -1,6 +1,7 @@
 [![build](https://github.com/Ethorbit/Docker-Srcds/actions/workflows/docker-image.yml/badge.svg)](https://github.com/Ethorbit/Docker-Srcds/actions/workflows/docker-image.yml)
+![issues](https://img.shields.io/github/issues/Ethorbit/Docker-Srcds)
 
-# Docker-Srcds
+# ![DockerHub](https://i.imgur.com/tItmtNW.png) [Docker Srcds](https://hub.docker.com/repository/docker/ethorbit/srcds-server)
 A docker image that installs and runs an srcds server for the specified game.
 
 ### What's different about this than the others?
