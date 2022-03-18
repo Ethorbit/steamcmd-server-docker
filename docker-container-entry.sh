@@ -10,4 +10,5 @@ if [ ! -z "$GROUP_ID" ]; then
 fi
 
 chown srcds -R "$DIR/"
+chmod 770 -R "$DIR/"
 exec runuser -u srcds -g srcds "$@"
