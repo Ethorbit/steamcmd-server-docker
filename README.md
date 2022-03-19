@@ -37,7 +37,7 @@ This can only be used on the first launch, but if you mount the container, you c
 
 These are the command line options (launch options and server commands) to run the server with, which contain: map, tick rate, rcon password, etc. (See https://developer.valvesoftware.com/wiki/Command_Line_Options)
 
-This **WILL NOT** work if running from a mounted directory that already has a start.sh file inside, edit that instead if it exists.
+This **WILL NOT** work if mounting a volume that already has a start.sh file inside, edit that instead if it exists.
 
 * `USER_ID` `GROUP_ID`
 
