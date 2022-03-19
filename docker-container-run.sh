@@ -45,7 +45,7 @@ function install_server {
 function start_server_while_updating {
 	echo "Starting server... (Checking for updates and validating files in the background)"
 	start_server
-	nohup watch -n $SRCDS_UPDATE_INTERVAL "$UPDATE_SCRIPT" > /dev/null &
+	nohup watch -n $SRCDS_UPDATE_INTERVAL "nohup \"$UPDATE_SCRIPT\" > /dev/null &" > /dev/null &
 }
 
 function update_and_start_server {
