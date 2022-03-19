@@ -48,6 +48,12 @@ The user and group ids that the docker container will run under. If you plan to 
 
 This will update and validate files in the background when the server is started; it's on by default. To disable automatic updates: change this to 0.
 
+* `SRCDS_UPDATE_INTERVAL`
+
+The interval (in seconds) to update the server while it's running. 
+
+This only works if auto updating is enabled.
+
 * `SRCDS_UPDATE`
 
 This is only useful if you have `SRCDS_AUTOUPDATE` set to 0. Having this option set to 1 means when the container runs: an update and file validation process will take place, and the server won't start until it's done.
