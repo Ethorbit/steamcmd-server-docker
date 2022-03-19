@@ -4,22 +4,22 @@ UPDATE_SCRIPT="$DIR/server/update.sh"
 INSTALL_SCRIPT="$UPDATE_SCRIPT"
 START_SCRIPT="$DIR/server/start.sh"
 
-if [ ! -f "$DIR/server/update.sh" ]; then
+if [ ! -f "$UPDATE_SCRIPT" ]; then
 	if [ -z "$SRCDS_APPID" ]; then
 		echo "Can't install! No App ID specified!"
 		exit
 	fi
 
-	echo "#!/bin/sh" >> "$DIR/server/update.sh"
+	echo "#!/bin/sh" >> "$UPDATE_SCRIPT"
 	echo "steamcmd +force_install_dir \"$DIR/server\" +login anonymous +app_update $SRCDS_APPID validate +exit" >> "$DIR/server/update.sh"
-	chmod +x "$DIR/server/update.sh"
+	chmod +x "$UPDATE_SCRIPT"
 fi
 
-if [ ! -z "$SRCDS_RUN_ARGS" ]; then
+if [ ! -f "$START_SCRIPT" ]; then
 	rm "$DIR/server/start.sh"
-	echo "#!/bin/sh" >> "$DIR/server/start.sh"
-	echo "\"$DIR/server/srcds_run\" $SRCDS_RUN_ARGS" >> "$DIR/server/start.sh"
-	chmod +x "$DIR/server/start.sh"
+	echo "#!/bin/sh" >> "$START_SCRIPT"
+	echo "\"$DIR/server/srcds_run\" $SRCDS_RUN_ARGS" >> "$START_SCRIPT"
+	chmod +x "$START_SCRIPT"
 fi
 
 if [ -z "$SRCDS_AUTOUPDATE" ]; then
