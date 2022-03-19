@@ -32,13 +32,13 @@ The server updates in the background after it launches, if it becomes outdated: 
 This is the Steam game's appid that you want srcds to install. (See https://developer.valvesoftware.com/wiki/Steam_Application_IDs)
 
 
-**This can only be used on the first launch**, but if you mount the container, you can modify the generated install.sh script.
+This can only be used on the first launch, but if you mount the container, you can modify the generated install.sh script.
 
 * `SRCDS_RUN_ARGS`
 
 These are the command line options (launch options and server commands) to run the server with, which contain: map, tick rate, rcon password, etc. (See https://developer.valvesoftware.com/wiki/Command_Line_Options)
 
-This **WILL NOT** work if mounting a volume that already has a start.sh file inside, edit that instead if it exists.
+This will not work if mounting a volume that already has a start.sh file inside, edit that instead if it exists.
 
 * `USER_ID` `GROUP_ID`
 
