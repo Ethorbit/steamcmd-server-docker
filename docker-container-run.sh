@@ -3,6 +3,7 @@ DIR="/home/srcds"
 UPDATE_SCRIPT="$DIR/server/update.sh"
 INSTALL_SCRIPT="$UPDATE_SCRIPT"
 START_SCRIPT="$DIR/server/start.sh"
+UPDATE_INTERVAL=120 #86400 # Interval (in seconds)
 
 if [ ! -f "$UPDATE_SCRIPT" ]; then
 	if [ -z "$SRCDS_APPID" ]; then
@@ -43,7 +44,7 @@ function install_server {
 
 function start_server_while_updating {
 	echo "Starting server... (Checking for updates and validating files in the background)"
-	nohup "$UPDATE_SCRIPT" > /dev/null & "$START_SCRIPT"
+	nohup watch -n $UPDATE_INTERVAL "$UPDATE_SCRIPT" > /dev/null &
 }
 
 function update_and_start_server {
