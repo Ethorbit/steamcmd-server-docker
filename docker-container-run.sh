@@ -4,7 +4,7 @@ UPDATE_SCRIPT="$DIR/server/update.sh"
 INSTALL_SCRIPT="$UPDATE_SCRIPT"
 START_SCRIPT="$DIR/server/start.sh"
 
-if [ ! -f "$DIR/server/update.sh" ]; then
+if [ ! -f "$UPDATE_SCRIPT" ]; then
 	if [ -z "$SRCDS_APPID" ]; then
 		echo "Can't install! No App ID specified!"
 		exit
@@ -15,8 +15,7 @@ if [ ! -f "$DIR/server/update.sh" ]; then
 	chmod +x "$DIR/server/update.sh"
 fi
 
-if [ ! -z "$SRCDS_RUN_ARGS" ]; then
-	echo "[TEST] I think you manually specified run arguments..."
+if [ ! -f "$START_SCRIPT" ] || [ ! -z "$SRCDS_RUN_ARGS" ]; then
 	rm "$DIR/server/start.sh"
 	echo "#!/bin/sh" >> "$DIR/server/start.sh"
 	echo "\"$DIR/server/srcds_run\" $SRCDS_RUN_ARGS" >> "$DIR/server/start.sh"
