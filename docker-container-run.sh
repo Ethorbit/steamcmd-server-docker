@@ -16,6 +16,7 @@ if [ ! -f "$DIR/server/update.sh" ]; then
 fi
 
 if [ ! -z "$SRCDS_RUN_ARGS" ]; then
+	echo "[TEST] I think you manually specified run arguments..."
 	rm "$DIR/server/start.sh"
 	echo "#!/bin/sh" >> "$DIR/server/start.sh"
 	echo "\"$DIR/server/srcds_run\" $SRCDS_RUN_ARGS" >> "$DIR/server/start.sh"
