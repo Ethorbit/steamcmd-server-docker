@@ -30,8 +30,9 @@ The server updates in the background after it launches, if it becomes outdated: 
 * `SRCDS_APPID`
 
 This is the Steam game's appid that you want srcds to install. (See https://developer.valvesoftware.com/wiki/Steam_Application_IDs)
-<br></br>
-This can only be used on the first launch, but if you mount the container, you can modify the generated install.sh script.
+
+
+**This can only be used on the first launch**, but if you mount the container, you can modify the generated install.sh script.
 
 * `SRCDS_RUN_ARGS`
 
