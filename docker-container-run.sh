@@ -65,7 +65,7 @@ function start_server {
 function install_server {
 	echo "Installing server..."
 	"$INSTALL_SCRIPT"
-	start_server
+	#start_server
 }
 
 function start_server_while_updating {
@@ -88,12 +88,12 @@ killall -q "srcds_run"
 
 if [ ! -f "$DIR/server/srcds_run" ]; then
 	install_server
+fi
+
+if [ "$SRCDS_AUTOUPDATE" != "0" ]; then
+	start_server_while_updating
 else
-	if [ "$SRCDS_AUTOUPDATE" != "0" ]; then
-		start_server_while_updating
-	else
-		if [ "$SRCDS_UPDATE" = "1" ]; then
-			update_and_start_server
-		fi
+	if [ "$SRCDS_UPDATE" = "1" ]; then
+		update_and_start_server
 	fi
 fi
