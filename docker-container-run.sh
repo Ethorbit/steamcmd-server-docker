@@ -23,7 +23,7 @@ if [ ! -f "$AUTO_UPDATE_SCRIPT" ]; then
 	echo "#!/bin/sh" >> "$AUTO_UPDATE_SCRIPT"
 	echo "while true; do" >> "$AUTO_UPDATE_SCRIPT"
 	echo "nohup "$UPDATE_SCRIPT" &> /dev/null" >> "$AUTO_UPDATE_SCRIPT"
-	echo "sleep \$SRCDS_UPDATE_INTERVAL" >> "$AUTO_UPDATE_SCRIPT"
+	echo "sleep $SRCDS_UPDATE_INTERVAL" >> "$AUTO_UPDATE_SCRIPT"
 	echo "done &" >> "$AUTO_UPDATE_SCRIPT"
 	chmod +x "$AUTO_UPDATE_SCRIPT"
 fi
