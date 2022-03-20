@@ -81,10 +81,10 @@ function update_and_start_server {
 }
 
 # Prevent overlapping
-killall -q "$AUTO_UPDATE_SCRIPT_NAME"
-killall -q "$UPDATE_SCRIPT_NAME"
-killall -q "$START_SCRIPT_NAME"
-killall -q "srcds_run"
+pkill "$AUTO_UPDATE_SCRIPT_NAME"
+pkill "$UPDATE_SCRIPT_NAME"
+pkill "$START_SCRIPT_NAME"
+pkill "srcds_run"
 
 if [ ! -f "$DIR/server/srcds_run" ]; then
 	install_server
