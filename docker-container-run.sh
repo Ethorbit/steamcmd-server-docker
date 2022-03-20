@@ -1,12 +1,15 @@
 #!/bin/bash
 DIR="/home/srcds"
-UPDATE_SCRIPT="$DIR/server/update.sh"
+UPDATE_SCRIPT_NAME="update.sh"
+UPDATE_SCRIPT="$DIR/server/$UPDATE_SCRIPT_NAME"
 AUTO_UPDATE_SCRIPT_NAME="auto-update.sh"
 AUTO_UPDATE_SCRIPT="$DIR/server/$AUTO_UPDATE_SCRIPT_NAME"
 SRCDS_UPDATE_INTERVAL=120 #86400 # Interval (in seconds)
 INSTALL_SCRIPT="$UPDATE_SCRIPT"
-START_SCRIPT="$DIR/server/start.sh"
-#AUTO_RESTART_SCRIPT="$DIR/srcds-auto-restart.sh"
+START_SCRIPT_NAME="start.sh"
+START_SCRIPT="$DIR/server/$START_SCRIPT_NAME"
+#AUTO_RESTART_SCRIPT_NAME="srcds-auto-restart.sh"
+#AUTO_RESTART_SCRIPT="$DIR/$AUTO_RESTART_SCRIPT_NAME"
 
 if [[ ! $SRCDS_UPDATE_INTERVAL =~ ^-?[0-9]+$ ]]; then
 	SRCDS_UPDATE_INTERVAL=86400
@@ -78,6 +81,8 @@ function update_and_start_server {
 }
 
 killall -q "$AUTO_UPDATE_SCRIPT_NAME"
+killall -q "$UPDATE_SCRIPT_NAME"
+killall -q "$START_SCRIPT_NAME"
 
 if [ ! -f "$DIR/server/srcds_run" ]; then
 	install_server
