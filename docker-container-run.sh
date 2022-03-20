@@ -1,12 +1,16 @@
 #!/bin/bash
 DIR="/home/srcds"
 UPDATE_SCRIPT="$DIR/server/update.sh"
-AUTO_UPDATE_SCRIPT_NAME="srcds-auto-update.sh"
-AUTO_UPDATE_SCRIPT="$DIR/$AUTO_UPDATE_SCRIPT_NAME"
+AUTO_UPDATE_SCRIPT_NAME="auto-update.sh"
+AUTO_UPDATE_SCRIPT="$DIR/server/$AUTO_UPDATE_SCRIPT_NAME"
 SRCDS_UPDATE_INTERVAL=120 #86400 # Interval (in seconds)
 INSTALL_SCRIPT="$UPDATE_SCRIPT"
 START_SCRIPT="$DIR/server/start.sh"
 #AUTO_RESTART_SCRIPT="$DIR/srcds-auto-restart.sh"
+
+if [[ ! $SRCDS_UPDATE_INTERVAL =~ ^-?[0-9]+$ ]]; then
+	SRCDS_UPDATE_INTERVAL=86400
+fi
 
 if [ ! -f "$UPDATE_SCRIPT" ]; then
 	if [ -z "$SRCDS_APPID" ]; then
@@ -22,7 +26,7 @@ fi
 if [ ! -f "$AUTO_UPDATE_SCRIPT" ]; then
 	echo "#!/bin/sh" >> "$AUTO_UPDATE_SCRIPT"
 	echo "while true; do" >> "$AUTO_UPDATE_SCRIPT"
-	echo "nohup "$UPDATE_SCRIPT" &> /dev/null" >> "$AUTO_UPDATE_SCRIPT"
+	echo "nohup \"$UPDATE_SCRIPT\" &> /dev/null" >> "$AUTO_UPDATE_SCRIPT"
 	echo "sleep $SRCDS_UPDATE_INTERVAL" >> "$AUTO_UPDATE_SCRIPT"
 	echo "done &" >> "$AUTO_UPDATE_SCRIPT"
 	chmod +x "$AUTO_UPDATE_SCRIPT"
