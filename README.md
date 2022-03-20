@@ -50,7 +50,7 @@ This will update and validate files in the background when the server is started
 
 * `SRCDS_UPDATE_INTERVAL`
 
-The interval (in seconds) to update the server while it's running. 
+The interval (in seconds) to update the server while it's running; it's set to 12 hours (43200) by default.
 
 This only works if auto updating is enabled and can only be used on the first launch, but if you mount the container, you can modify the generated auto-update.sh script.
 
