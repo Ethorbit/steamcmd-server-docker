@@ -4,7 +4,7 @@ UPDATE_SCRIPT_NAME="update.sh"
 UPDATE_SCRIPT="$DIR/server/$UPDATE_SCRIPT_NAME"
 AUTO_UPDATE_SCRIPT_NAME="auto-update.sh"
 AUTO_UPDATE_SCRIPT="$DIR/server/$AUTO_UPDATE_SCRIPT_NAME"
-SRCDS_UPDATE_INTERVAL=120 #86400 # Interval (in seconds)
+SRCDS_UPDATE_INTERVAL=43200 # Interval (in seconds)
 INSTALL_SCRIPT="$UPDATE_SCRIPT"
 START_SCRIPT_NAME="start.sh"
 START_SCRIPT="$DIR/server/$START_SCRIPT_NAME"
@@ -65,7 +65,6 @@ function start_server {
 function install_server {
 	echo "Installing server..."
 	"$INSTALL_SCRIPT"
-	#start_server
 }
 
 function start_server_while_updating {
