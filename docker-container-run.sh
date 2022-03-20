@@ -86,11 +86,11 @@ pkill "$UPDATE_SCRIPT_NAME"
 pkill "$START_SCRIPT_NAME"
 pkill "srcds_run"
 
-if [ ! -f "$DIR/server/srcds_run" ]; then
-	install_server
-fi
-
 if [ "$SRCDS_AUTOUPDATE" != "0" ]; then
+	if [ ! -f "$DIR/server/srcds_run" ]; then
+		install_server
+	fi
+
 	start_server_while_updating
 else
 	if [ "$SRCDS_UPDATE" = "1" ]; then
