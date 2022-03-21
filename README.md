@@ -50,16 +50,20 @@ This can only be used on the first launch, but if you mount the container, you c
 
 The user and group ids that the docker container will run under. If you plan to mount the container to your system, you'll want this to match the user you plan to modify the files on (so that there's no permission issues), you can also add yourself to the USER_ID group to give yourself permissions.
 
-~~* `SRCDS_AUTOUPDATE`~~
+* `SRCDS_AUTOVALIDATE`
 
-~~This will update and validate files in the background when the server is started; it's on by default. To disable automatic updates: change this to 0.~~
+This will validate files in the background when the server is started. 
 
-~~* `SRCDS_UPDATE_INTERVAL`~~
+Note: you do not need this for updates, srcds updates are automatic.
 
-~~The interval (in seconds) to update the server while it's running; it's set to 12 hours (43200) by default.~~
+* `SRCDS_VALIDATE_INTERVAL`
 
-~~This only works if auto updating is enabled and can only be used on the first launch, but if you mount the container, you can modify the generated auto-update.sh script.`~~
+The interval (in seconds) to validate the server files while it's running; it's set to 12 hours (43200) by default.
 
-~~* `SRCDS_UPDATE`~~
+This only works if auto validating is enabled and can only be used on the first launch, but if you mount the container, you can modify the generated auto-validate.sh script.`
 
-~~This is only useful if you have `SRCDS_AUTOUPDATE` set to 0. Having this option set to 1 means when the container runs: an update and file validation process will take place, and the server won't start until it's done.~~
+* `SRCDS_VALIDATE`
+
+This is only useful if you have `SRCDS_AUTOVALIDATE` set to 0. Having this option set to 1 means when the container runs: a file validation process will take place, and the server won't start until it's done.
+
+Unless for some reason your server keeps getting core components removed, there's no reason to enable this.
