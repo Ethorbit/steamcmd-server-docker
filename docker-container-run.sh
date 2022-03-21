@@ -11,28 +11,28 @@ START_SCRIPT="$DIR/server/$START_SCRIPT_NAME"
 #AUTO_RESTART_SCRIPT_NAME="srcds-auto-restart.sh"
 #AUTO_RESTART_SCRIPT="$DIR/$AUTO_RESTART_SCRIPT_NAME"
 
-if [[ ! $SRCDS_UPDATE_INTERVAL =~ ^-?[0-9]+$ ]]; then
-	SRCDS_UPDATE_INTERVAL=43200
-fi
+#if [[ ! $SRCDS_UPDATE_INTERVAL =~ ^-?[0-9]+$ ]]; then
+	#SRCDS_UPDATE_INTERVAL=43200
+#fi
 
 if [ ! -f "$UPDATE_SCRIPT" ]; then
-	if [ -z "$SRCDS_APPID" ]; then
-		echo "Can't install! No App ID specified!"
-		exit
-	fi
+	#if [ -z "$SRCDS_APPID" ]; then
+	#	echo "Can't install! No App ID specified!"
+	#	exit
+	#fi
 
-	echo "#!/bin/sh" >> "$UPDATE_SCRIPT"
-	echo "steamcmd +force_install_dir \"$DIR/server\" +login anonymous +app_update $SRCDS_APPID validate +exit" >> "$DIR/server/update.sh"
-	chmod +x "$UPDATE_SCRIPT"
+	#echo "#!/bin/sh" >> "$UPDATE_SCRIPT"
+	#echo "steamcmd +force_install_dir \"$DIR/server\" +login anonymous +app_update $SRCDS_APPID validate +exit" >> "$DIR/server/update.sh"
+	#chmod +x "$UPDATE_SCRIPT"
 fi
 
 if [ ! -f "$AUTO_UPDATE_SCRIPT" ]; then
-	echo "#!/bin/sh" >> "$AUTO_UPDATE_SCRIPT"
-	echo "while true; do" >> "$AUTO_UPDATE_SCRIPT"
-	echo "nohup \"$UPDATE_SCRIPT\" > /dev/null 2>&1" >> "$AUTO_UPDATE_SCRIPT"
-	echo "sleep $SRCDS_UPDATE_INTERVAL" >> "$AUTO_UPDATE_SCRIPT"
-	echo "done &" >> "$AUTO_UPDATE_SCRIPT"
-	chmod +x "$AUTO_UPDATE_SCRIPT"
+	#echo "#!/bin/sh" >> "$AUTO_UPDATE_SCRIPT"
+	#echo "while true; do" >> "$AUTO_UPDATE_SCRIPT"
+	#echo "nohup \"$UPDATE_SCRIPT\" > /dev/null 2>&1" >> "$AUTO_UPDATE_SCRIPT"
+	#echo "sleep $SRCDS_UPDATE_INTERVAL" >> "$AUTO_UPDATE_SCRIPT"
+	#echo "done &" >> "$AUTO_UPDATE_SCRIPT"
+	#chmod +x "$AUTO_UPDATE_SCRIPT"
 fi
 
 if [ ! -f "$START_SCRIPT" ]; then
@@ -68,20 +68,21 @@ function install_server {
 }
 
 function start_server_while_updating {
-	echo "Starting server... (Checking for updates and validating files in the background)"
-	"$AUTO_UPDATE_SCRIPT"
-	"$START_SCRIPT"
+	#echo "Starting server... (Checking for updates and validating files in the background)"
+	#"$AUTO_UPDATE_SCRIPT"
+	#"$START_SCRIPT"
+	start_server
 }
 
 function update_and_start_server {
-	echo "Checking for updates and validating files..."
-	"$UPDATE_SCRIPT"
+	#echo "Checking for updates and validating files..."
+	#"$UPDATE_SCRIPT"
 	start_server
 }
 
 # Prevent overlapping
-pkill "$AUTO_UPDATE_SCRIPT_NAME"
-pkill "$UPDATE_SCRIPT_NAME"
+#pkill "$AUTO_UPDATE_SCRIPT_NAME"
+#pkill "$UPDATE_SCRIPT_NAME"
 pkill "$START_SCRIPT_NAME"
 pkill "srcds_run"
 
