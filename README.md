@@ -42,7 +42,7 @@ These are already configured automatically:
 * -steam_dir
 * -steamcmd_script
 
-So don't pass them; mount the container and modify the generated start.sh script instead.
+So don't pass them, mount the container and modify the generated start.sh script instead.
 
 This can only be used on the first launch, but if you mount the container, you can always change it in start.sh.
 
