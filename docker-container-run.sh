@@ -22,7 +22,7 @@ if [ ! -f "$UPDATE_SCRIPT" ]; then
 	fi
 
 	echo "#!/bin/sh" >> "$UPDATE_SCRIPT"
-	echo "steamcmd -autoupdate -steam_dir /home/srcds/.steam/steamcmd -steamcmd_script /home/srcds/server/update.sh +force_install_dir \"$DIR/server\" +login anonymous +app_update $SRCDS_APPID validate +exit" >> "$DIR/server/update.sh"
+	echo "steamcmd +login anonymous +app_update $SRCDS_APPID validate +exit" >> "$DIR/server/update.sh"
 	chmod +x "$UPDATE_SCRIPT"
 fi
 
