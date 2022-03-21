@@ -5,7 +5,7 @@
 A docker image that installs and runs an srcds server for the specified game.
 
 ### What's different about this than the others?
-It not only installs the server you want, but also simultaneously updates, validates files, and runs on container start. All files are created at runtime, meaning you can mount the container to the host filesystem and easily manage the server there. (See examples below)
+It not only installs the server you want, ~~but also simultaneously updates~~ (You can setup auto updating with srcds launch options), validates files, and runs on container start. All files are created at runtime, meaning you can mount the container to the host filesystem and easily manage the server there. (See examples below)
 
 There's also full terminal interactivity support, for example: if you press hotkey combos like Ctrl+l; it will be processed properly. This is because all the required libraries are present, unlike with other installs.
 
@@ -44,16 +44,16 @@ This can only be used on the first launch, but if you mount the container, you c
 
 The user and group ids that the docker container will run under. If you plan to mount the container to your system, you'll want this to match the user you plan to modify the files on (so that there's no permission issues)
 
-* `SRCDS_AUTOUPDATE`
+~~* `SRCDS_AUTOUPDATE`~~
 
-This will update and validate files in the background when the server is started; it's on by default. To disable automatic updates: change this to 0.
+~~This will update and validate files in the background when the server is started; it's on by default. To disable automatic updates: change this to 0.~~
 
-* `SRCDS_UPDATE_INTERVAL`
+~~* `SRCDS_UPDATE_INTERVAL`~~
 
-The interval (in seconds) to update the server while it's running; it's set to 12 hours (43200) by default.
+~~The interval (in seconds) to update the server while it's running; it's set to 12 hours (43200) by default.~~
 
-This only works if auto updating is enabled and can only be used on the first launch, but if you mount the container, you can modify the generated auto-update.sh script.
+~~This only works if auto updating is enabled and can only be used on the first launch, but if you mount the container, you can modify the generated auto-update.sh script.`~~
 
-* `SRCDS_UPDATE`
+~~* `SRCDS_UPDATE`~~
 
-This is only useful if you have `SRCDS_AUTOUPDATE` set to 0. Having this option set to 1 means when the container runs: an update and file validation process will take place, and the server won't start until it's done.
+~~This is only useful if you have `SRCDS_AUTOUPDATE` set to 0. Having this option set to 1 means when the container runs: an update and file validation process will take place, and the server won't start until it's done.~~
