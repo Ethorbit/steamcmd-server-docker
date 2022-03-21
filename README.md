@@ -11,9 +11,6 @@ A docker image that installs and runs an srcds server for the specified game.
 
 * There's full terminal interactivity support, for example: if you press hotkey combos like Ctrl+l; it will be processed properly. This is because all the required libraries are present, unlike with other installs.
 
-### How do the auto updates work?
-The server updates in the background after it launches, if it becomes outdated: simply restart it.
-
 ## Examples
 * Creating a Garry's Mod server
 ```docker run -dit --env SRCDS_APPID=4020 --network host --restart always --name "my-gmod-server" ethorbit/srcds-server:latest```
