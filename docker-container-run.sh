@@ -2,9 +2,9 @@
 DIR="/home/srcds"
 UPDATE_SCRIPT_NAME="update.sh"
 UPDATE_SCRIPT="$DIR/server/$UPDATE_SCRIPT_NAME"
-AUTO_UPDATE_SCRIPT_NAME="auto-update.sh"
-AUTO_UPDATE_SCRIPT="$DIR/server/$AUTO_UPDATE_SCRIPT_NAME"
-SRCDS_UPDATE_INTERVAL=43200 # Interval (in seconds)
+#AUTO_UPDATE_SCRIPT_NAME="auto-update.sh"
+#AUTO_UPDATE_SCRIPT="$DIR/server/$AUTO_UPDATE_SCRIPT_NAME"
+#SRCDS_UPDATE_INTERVAL=43200 # Interval (in seconds)
 INSTALL_SCRIPT="$UPDATE_SCRIPT"
 START_SCRIPT_NAME="start.sh"
 START_SCRIPT="$DIR/server/$START_SCRIPT_NAME"
@@ -50,13 +50,13 @@ fi
 	# fi
 # fi
 
-if [ -z "$SRCDS_AUTOUPDATE" ]; then
-	SRCDS_AUTOUPDATE=1
-fi
-
-if [ -z "$SRCDS_UPDATE" ]; then # Manual update is off by default (duh)
-	SRCDS_UPDATE=0
-fi
+# if [ -z "$SRCDS_AUTOUPDATE" ]; then
+# 	SRCDS_AUTOUPDATE=1
+# fi
+#
+# if [ -z "$SRCDS_UPDATE" ]; then # Manual update is off by default (duh)
+# 	SRCDS_UPDATE=0
+# fi
 
 function start_server {
 	echo "Starting server..."
@@ -68,18 +68,17 @@ function install_server {
 	"$INSTALL_SCRIPT"
 }
 
-function start_server_while_updating {
-	#echo "Starting server... (Checking for updates and validating files in the background)"
-	#"$AUTO_UPDATE_SCRIPT"
-	#"$START_SCRIPT"
-	start_server
-}
+# function start_server_while_updating {
+# 	#echo "Starting server... (Checking for updates and validating files in the background)"
+# 	#"$AUTO_UPDATE_SCRIPT"
+# 	#"$START_SCRIPT"
+# }
 
-function update_and_start_server {
-	#echo "Checking for updates and validating files..."
-	#"$UPDATE_SCRIPT"
-	start_server
-}
+# function update_and_start_server {
+# 	#echo "Checking for updates and validating files..."
+# 	#"$UPDATE_SCRIPT"
+# 	start_server
+# }
 
 # Prevent overlapping
 #pkill "$AUTO_UPDATE_SCRIPT_NAME"
@@ -91,10 +90,12 @@ if [ ! -f "$DIR/server/srcds_run" ]; then
 	install_server
 fi
 
-if [ "$SRCDS_AUTOUPDATE" != "0" ]; then
-	start_server_while_updating
-else
-	if [ "$SRCDS_UPDATE" = "1" ]; then
-		update_and_start_server
-	fi
-fi
+# if [ "$SRCDS_AUTOUPDATE" != "0" ]; then
+# 	start_server_while_updating
+# else
+# 	if [ "$SRCDS_UPDATE" = "1" ]; then
+# 		update_and_start_server
+# 	fi
+# fi
+
+start_server
