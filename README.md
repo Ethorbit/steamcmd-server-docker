@@ -47,7 +47,7 @@ These properties are inserted before your run args automatically:
 
 So don't pass them; mount the container and modify the generated start.sh script instead.
 
-This can only be used on the first launch, but if you mount the container, you can modify the script.
+This can only be used on the first launch, but if you mount the container, you can always change it.
 
 * `USER_ID` `GROUP_ID`
 
