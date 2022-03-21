@@ -39,7 +39,7 @@ fi
 if [ ! -f "$START_SCRIPT" ]; then
 	rm "$DIR/server/start.sh"
 	echo "#!/bin/sh" >> "$START_SCRIPT"
-	echo "\"$DIR/server/srcds_run\" $SRCDS_RUN_ARGS" >> "$START_SCRIPT"
+	echo "\"$DIR/server/srcds_run\" -autoupdate -steam_dir /home/srcds/.steam/steamcmd -steamcmd_script /home/srcds/server/update.sh $SRCDS_RUN_ARGS" >> "$START_SCRIPT"
 	chmod +x "$START_SCRIPT"
 fi
 
