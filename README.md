@@ -48,7 +48,7 @@ This can only be used on the first launch, but if you mount the container, you c
 
 * `USER_ID` `GROUP_ID`
 
-The user and group ids that the docker container will run under. If you plan to mount the container to your system, you'll want this to match the user you plan to modify the files on (so that there's no permission issues)
+The user and group ids that the docker container will run under. If you plan to mount the container to your system, you'll want this to match the user you plan to modify the files on (so that there's no permission issues), you can also add yourself to the USER_ID group to give yourself permissions.
 
 ~~* `SRCDS_AUTOUPDATE`~~
 
