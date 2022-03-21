@@ -40,7 +40,14 @@ This can only be used on the first launch, but if you mount the container, you c
 
 These are the command line options (launch options and server commands) to run the server with, which contain: map, tick rate, rcon password, etc. (See https://developer.valvesoftware.com/wiki/Command_Line_Options)
 
-This can only be used on the first launch, but if you mount the container, you can modify the generated start.sh script.
+These properties are inserted before your run args automatically: 
+* -autoupdate
+* -steam_dir
+* -steamcmd_script
+
+So don't pass them; mount the container and modify the generated start.sh script instead.
+
+This can only be used on the first launch, but if you mount the container, you can modify the script.
 
 * `USER_ID` `GROUP_ID`
 
