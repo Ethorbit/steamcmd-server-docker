@@ -37,7 +37,7 @@ This can only be used on the first launch, but if you mount the container, you c
 
 These are the command line options (launch options and server commands) to run the server with, which contain: map, tick rate, rcon password, etc. (See https://developer.valvesoftware.com/wiki/Command_Line_Options)
 
-These properties are inserted before your run args automatically: 
+These are already configured automatically: 
 * -autoupdate
 * -steam_dir
 * -steamcmd_script
@@ -52,6 +52,7 @@ The user and group ids that the docker container will run under. If you plan to 
 
 * `SRCDS_AUTOVALIDATE`
 
+(Off by default because of the CPU performance impact)
 This will validate files in the background when the server is started. 
 
 Note: you do not need this for updates, srcds updates are automatic.
