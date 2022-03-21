@@ -16,24 +16,25 @@ START_SCRIPT="$DIR/server/$START_SCRIPT_NAME"
 #fi
 
 if [ ! -f "$UPDATE_SCRIPT" ]; then
-	#if [ -z "$SRCDS_APPID" ]; then
-	#	echo "Can't install! No App ID specified!"
-	#	exit
-	#fi
+	if [ -z "$SRCDS_APPID" ]; then
+		echo "Can't install! No App ID specified!"
+		exit
+	fi
 
-	#echo "#!/bin/sh" >> "$UPDATE_SCRIPT"
-	#echo "steamcmd +force_install_dir \"$DIR/server\" +login anonymous +app_update $SRCDS_APPID validate +exit" >> "$DIR/server/update.sh"
-	#chmod +x "$UPDATE_SCRIPT"
+	echo "#!/bin/sh" >> "$UPDATE_SCRIPT"
+	echo "steamcmd +force_install_dir \"$DIR/server\" +login anonymous +app_update $SRCDS_APPID validate +exit" >> "$DIR/server/update.sh"
+	chmod +x "$UPDATE_SCRIPT"
 fi
 
-if [ ! -f "$AUTO_UPDATE_SCRIPT" ]; then
+# Not needed, srcds has auto update functionality
+#if [ ! -f "$AUTO_UPDATE_SCRIPT" ]; then
 	#echo "#!/bin/sh" >> "$AUTO_UPDATE_SCRIPT"
 	#echo "while true; do" >> "$AUTO_UPDATE_SCRIPT"
 	#echo "nohup \"$UPDATE_SCRIPT\" > /dev/null 2>&1" >> "$AUTO_UPDATE_SCRIPT"
 	#echo "sleep $SRCDS_UPDATE_INTERVAL" >> "$AUTO_UPDATE_SCRIPT"
 	#echo "done &" >> "$AUTO_UPDATE_SCRIPT"
 	#chmod +x "$AUTO_UPDATE_SCRIPT"
-fi
+#fi
 
 if [ ! -f "$START_SCRIPT" ]; then
 	rm "$DIR/server/start.sh"
