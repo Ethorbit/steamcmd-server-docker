@@ -5,21 +5,15 @@
 A docker image that installs and runs an srcds server for the specified game.
 
 ### What's different about this than the others?
-* All files are created at runtime, meaning you can mount the container to the host filesystem and easily manage the server there. (See examples below)
+* All files are created at runtime, meaning you mount the container to the host filesystem and easily manage the server there. (See examples below)
 
 * Automatic updating is setup by default
 
-* There's full terminal interactivity support, for example: if you press hotkey combos like Ctrl+l; it will be processed properly. This is because all the required libraries are present, unlike with other installs.
+* There's full terminal interactivity support, for example: if you press hotkey combos like Ctrl+l, it will be processed properly. This is because all the required libraries are present, unlike with other installs.
 
 ## Examples
-* Creating a Garry's Mod server
-```docker run -dit --env SRCDS_APPID=4020 --network host --restart always --name "my-gmod-server" ethorbit/srcds-server:latest```
-
-* Creating a Garry's Mod server with run args
-```docker run -dit --env SRCDS_APPID=4020 --env SRCDS_RUN_ARGS='-tickrate 66 +gamemode "sandbox" +map "gm_construct"' --restart always --network host --name "my-gmod-server" ethorbit/srcds-server:latest```
-
-* Creating a Garry's Mod server with run args which runs as my host user and mounting it somewhere in my home directory
-```docker run -dit -v /home/ethorbit/Servers/my-gmod-server:/home/srcds/server --env SRCDS_APPID=4020 --env SRCDS_RUN_ARGS='-tickrate 66 +rcon_password "mypass" +gamemode "sandbox" +map "gm_flatgrass"' --env USER_ID=1000 --env GROUP_ID=1000 --restart always --network host --name "my-gmod-server" ethorbit/srcds-server:latest```
+* Creating a Garry's Mod server 
+```docker run -dit -v /home/ethorbit/Servers/my-gmod-server:/home/srcds/server --env SRCDS_APPID=4020 --env SRCDS_RUN_ARGS='-tickrate 66 +gamemode "sandbox" +map "gm_construct"' --restart always --name "my-gmod-server" ethorbit/srcds-server:latest```
 
 * Using the console of a detached server: ```docker container attach "my-gmod-server"``` 
 
@@ -31,7 +25,14 @@ A docker image that installs and runs an srcds server for the specified game.
 This is the Steam game's appid that you want srcds to install. (See https://developer.valvesoftware.com/wiki/Steam_Application_IDs)
 
 
-This can only be used on the first launch, but if you mount the container, you can modify the generated install.sh script.
+This can only be used on the first launch, but you can modify the generated update.sh script.
+
+* `SRCDS_RUN_BINARY`
+
+This is the name or relative path to the srcds server's start binary, it is usually called 'srcds_run' (which is the default). If your server doesn't start, change this.
+
+
+This can only be used on the first launch, but you can modify the generated start.sh script.
 
 * `SRCDS_RUN_ARGS`
 
@@ -42,20 +43,20 @@ These are already configured automatically:
 * -steam_dir
 * -steamcmd_script
 
-So don't pass them, mount the container and modify the generated start.sh script instead.
+So don't pass them, modify the generated start.sh script instead.
 
-This can only be used on the first launch, but if you mount the container, you can always change it in start.sh.
+This can only be used on the first launch, but you can always change it in start.sh.
 
 * `USER_ID` `GROUP_ID`
 
-The user and group ids that the docker container will run under. If you plan to mount the container to your system, you'll want this to match the user you plan to modify the files on (so that there's no permission issues), you can also add yourself to the USER_ID group to give yourself permissions.
+The user and group ids that the docker container will run under. You'll want this to match the user you plan to modify the files on (so that there's no permission issues), you can also add yourself to the group to give yourself permissions.
 
 * `SRCDS_AUTOVALIDATE`
 
 (Off by default because of the CPU performance impact)
 This will validate files in the background when the server is started. 
 
-Note: you do not need this for updates, srcds updates are automatic.
+Note: you do not need this for updates, srcds updates should already be automatic.
 
 * `SRCDS_VALIDATE_INTERVAL`
 
@@ -68,3 +69,23 @@ This only works if auto validating is enabled and can only be used on the first 
 This is only useful if you have `SRCDS_AUTOVALIDATE` set to 0. Having this option set to 1 means when the container runs: a file validation process will take place, and the server won't start until it's done.
 
 Unless for some reason your server keeps getting core components removed, there's no reason to enable this.
+
+## Solving startup issues 
+
+Because all servers are different, sometimes system dependencies will be required which will not exist in this container. If a server has missing dependencies, it won't start or function correctly.
+
+You can solve this in one of two ways:
+
+<details>
+    <summary>Manually</summary>
+
+    * Run `docker container exec -it container-name bash`
+    * Install & setup the required packages
+    * Try running container again 
+</details>
+
+<details>
+    <summary>Automatically</summary>
+
+    There isn't a way to do this automatically, but you can create your own container which is based off of this one, and has the required dependencies (which you can test by trying the 'Manually' steps).
+</details>
