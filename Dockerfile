@@ -1,4 +1,4 @@
-FROM ubuntu:lunar-20221207
+FROM ubuntu:jammy
 WORKDIR /home/srcds/
 ENV PATH="$PATH:/usr/games"
 ENV SRCDS_RUN_BINARY="srcds_run"
