@@ -8,8 +8,6 @@ SRCDS_VALIDATE_INTERVAL=43200 # Interval (in seconds)
 INSTALL_SCRIPT="$UPDATE_SCRIPT"
 START_SCRIPT_NAME="start.sh"
 START_SCRIPT="$DIR/server/$START_SCRIPT_NAME"
-#AUTO_RESTART_SCRIPT_NAME="srcds-auto-restart.sh"
-#AUTO_RESTART_SCRIPT="$DIR/$AUTO_RESTART_SCRIPT_NAME"
 
 if [[ ! $AUTO_VALIDATE_INTERVAL =~ ^-?[0-9]+$ ]]; then
 	AUTO_VALIDATE_INTERVAL=43200
@@ -38,16 +36,9 @@ fi
 if [ ! -f "$START_SCRIPT" ]; then
 	rm "$DIR/server/start.sh"
 	echo "#!/bin/sh" >> "$START_SCRIPT"
-	echo "\"$DIR/server/srcds_run\" -autoupdate -steam_dir /home/srcds/.steam/steamcmd -steamcmd_script /home/srcds/server/update.sh $SRCDS_RUN_ARGS" >> "$START_SCRIPT"
+	echo "\"$DIR/server/$SRCDS_RUN_BINARY\" -autoupdate -steam_dir /home/srcds/.steam/steamcmd -steamcmd_script /home/srcds/server/update.sh $SRCDS_RUN_ARGS" >> "$START_SCRIPT"
 	chmod +x "$START_SCRIPT"
 fi
-
-# No need for auto restart, SRCDS Linux does it already.
-# if [ ! -f "$AUTO_RESTART_SCRIPT" ]; then
-# 	# if $(pgrep -c srcds_linux = 0); then
-		# start start.sh again
-	# fi
-# fi
 
 if [ -z "$SRCDS_VALIDATE" ]; then # Manual update is off by default (duh)
 	SRCDS_VALIDATE=0
@@ -83,9 +74,10 @@ function update_and_start_server {
 pkill "$AUTO_VALIDATE_SCRIPT_NAME"
 pkill "$UPDATE_SCRIPT_NAME"
 pkill "$START_SCRIPT_NAME"
-pkill "srcds_run"
 
-if [ ! -f "$DIR/server/srcds_run" ]; then
+cd "$DIR/server/" 
+
+if [ ! -f "$DIR/server/$SRCDS_RUN_BINARY" ]; then
 	install_server
 fi
 
