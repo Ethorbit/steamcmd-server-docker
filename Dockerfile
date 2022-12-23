@@ -1,6 +1,10 @@
-FROM ubuntu:latest
+FROM ubuntu:lunar-20221207
 WORKDIR /home/srcds/
 ENV PATH="$PATH:/usr/games"
+ENV SRCDS_RUN_BINARY="srcds_run"
+ENV SRCDS_RUN_ARGS=""
+COPY ./docker-container-entry.sh ./docker-container-entry.sh 
+COPY ./docker-container-run.sh ./docker-container-run.sh
 RUN useradd srcds &&\
     apt-get update -y &&\
     export DEBIAN_FRONTEND=noninteractive &&\
@@ -9,12 +13,10 @@ RUN useradd srcds &&\
     apt-get update -y &&\
     echo steam steam/question select "I AGREE" | debconf-set-selections &&\
     apt-get install --no-install-recommends --no-install-suggests -y \
-                wget dialog lib32gcc1 steamcmd libtinfo5:i386 \
+                wget dialog lib32gcc-s1 steamcmd libtinfo5:i386 \
                 libncurses5:i386 libcurl3-gnutls:i386 \
                 libsdl2-2.0-0:i386 &&\
     mkdir ./server &&\
-    wget "https://raw.githubusercontent.com/Ethorbit/Docker-Srcds/main/docker-container-entry.sh" &&\
-    wget "https://raw.githubusercontent.com/Ethorbit/Docker-Srcds/main/docker-container-run.sh" &&\
     chmod +x ./docker-container-entry.sh &&\
     chmod +x ./docker-container-run.sh
 ENTRYPOINT ["/bin/bash", "/home/srcds/docker-container-entry.sh"]
