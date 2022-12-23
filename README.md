@@ -79,13 +79,15 @@ You can solve this in one of two ways:
 <details>
     <summary>Manually</summary>
 
-    * Run `docker container exec -it container-name bash`
-    * Install & setup the required packages
-    * Try running container again 
+
+* Run `docker container exec -it container-name bash`
+* Install & setup the required packages
+* Try running container again 
 </details>
 
 <details>
     <summary>Automatically</summary>
 
-    There isn't a way to do this automatically, but you can create your own container which is based off of this one, and has the required dependencies (which you can test by trying the 'Manually' steps).
+    
+There isn't a way to do this automatically, but you can create your own container which is based off of this one, and has the required dependencies (which you can test by trying the 'Manually' steps).
 </details>
