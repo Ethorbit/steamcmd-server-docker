@@ -55,7 +55,7 @@ function start_server {
 
 function install_server {
 	echo "Installing server..."
-	"$INSTALL_SCRIPT"
+    "$INSTALL_SCRIPT"
 }
 
 function start_server_while_updating {
