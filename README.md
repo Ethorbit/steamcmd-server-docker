@@ -89,5 +89,5 @@ You can solve this in one of two ways:
     <summary>Automatically</summary>
 
     
-There isn't a way to do this automatically, but you can create your own container which is based off of this one, and has the required dependencies (which you can test by trying the 'Manually' steps).
+There isn't a way to do this automatically, but you can create your own container which is based off of this one, and has the required dependencies [like done here for Sven Co-op](https://github.com/Ethorbit/svencoop-ds-docker)
 </details>
