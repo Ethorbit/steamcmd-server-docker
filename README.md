@@ -11,7 +11,7 @@ A docker image that installs and runs an srcds server for the specified game.
 
 ## Examples
 * Creating a Garry's Mod server 
-```docker run -dit -v /home/ethorbit/Servers/my-gmod-server:/home/srcds/server --env SRCDS_APPID=4020 --env SRCDS_RUN_ARGS='-tickrate 66 +gamemode "sandbox" +map "gm_construct"' --restart always --name "my-gmod-server" ethorbit/srcds-server:latest```
+```docker run -dit -v /home/ethorbit/Servers/my-gmod-server:/home/srcds/server --env SRCDS_APPID=4020 --env SRCDS_RUN_ARGS='-port 27015 -tickrate 66 +gamemode "sandbox" +map "gm_construct"' -p 27015:27015/udp --restart always --name "my-gmod-server" ethorbit/srcds-server:latest```
 
 * Using the console of a detached server: ```docker container attach "my-gmod-server"``` 
 
