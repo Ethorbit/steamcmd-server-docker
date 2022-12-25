@@ -15,10 +15,14 @@ RUN useradd srcds &&\
     apt-get install --no-install-recommends --no-install-suggests -y \
                 wget dialog lib32gcc-s1 steamcmd libtinfo5:i386 \
                 libncurses5:i386 libcurl3-gnutls:i386 \
+<<<<<<< HEAD
                 libsdl2-2.0-0:i386 &&\ 
     # Dumb steamcmd fix, because Valve doesn't know how to properly shell script :/ 
     # (they try to symlink files into a nonexistent directory on purpose, which obviously fails)
     sed -i '\|mkdir -p "$STEAMROOT/.steam/appcache/"|i\\tmkdir ~/.steam' /usr/games/steamcmd &&\
+=======
+                libsdl2-2.0-0:i386 &&\
+>>>>>>> parent of 40d188b (Fix valve's steamcmd lmfao)
     mkdir ./server &&\
     chmod +x ./docker-container-entry.sh &&\
     chmod +x ./docker-container-run.sh
