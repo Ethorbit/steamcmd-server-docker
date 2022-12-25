@@ -18,7 +18,7 @@ RUN useradd srcds &&\
                 libsdl2-2.0-0:i386 &&\ 
     # Dumb steamcmd fix, because Valve doesn't know how to properly shell script :/ 
     # (they try to symlink files into a nonexistent directory on purpose, which obviously fails)
-    sed -i '\|ln -s "$STEAMROOT" ~/.steam/root|i\\tmkdir ~/.steam' /usr/games/steamcmd &&\
+    sed -i '\|mkdir -p "$STEAMROOT/.steam/appcache/"|i\\tmkdir ~/.steam' /usr/games/steamcmd &&\
     mkdir ./server &&\
     chmod +x ./docker-container-entry.sh &&\
     chmod +x ./docker-container-run.sh
