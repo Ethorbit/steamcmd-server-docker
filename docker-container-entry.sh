@@ -1,5 +1,5 @@
 #!/bin/bash
-DIR=$(dirname -- $0)
+DIR="/home/srcds"
 
 if [ ! -z "$USER_ID" ]; then
     usermod -u $USER_ID srcds > /dev/null

@@ -3,8 +3,8 @@ WORKDIR /home/srcds/
 ENV PATH="$PATH:/usr/games"
 ENV SRCDS_RUN_BINARY="srcds_run"
 ENV SRCDS_RUN_ARGS=""
-COPY ./docker-container-entry.sh ./docker-container-entry.sh 
-COPY ./docker-container-run.sh ./docker-container-run.sh
+COPY ./docker-container-entry.sh /docker-container-entry.sh 
+COPY ./docker-container-run.sh /docker-container-run.sh
 RUN useradd srcds &&\
     apt-get update -y &&\
     export DEBIAN_FRONTEND=noninteractive &&\
@@ -20,7 +20,7 @@ RUN useradd srcds &&\
     # (they try to symlink files into a nonexistent directory on purpose, which obviously fails)
     sed -i '\|ln -s "$STEAMROOT" ~/.steam/root|i\\tmkdir ~/.steam' /usr/games/steamcmd &&\
     mkdir ./server &&\
-    chmod +x ./docker-container-entry.sh &&\
-    chmod +x ./docker-container-run.sh
-ENTRYPOINT ["/bin/bash", "/home/srcds/docker-container-entry.sh"]
-CMD ["/bin/bash", "./docker-container-run.sh"]
+    chmod +x /docker-container-entry.sh &&\
+    chmod +x /docker-container-run.sh
+ENTRYPOINT ["/bin/bash", "/docker-container-entry.sh"]
+CMD ["/bin/bash", "/docker-container-run.sh"]
