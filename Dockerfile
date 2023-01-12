@@ -3,10 +3,8 @@ WORKDIR /home/srcds/
 ENV PATH="$PATH:/usr/games"
 ENV SRCDS_RUN_BINARY="srcds_run"
 ENV SRCDS_RUN_ARGS=""
-COPY ./docker-container-entry.sh /docker-container-entry.sh 
 COPY ./docker-container-run.sh /docker-container-run.sh
-RUN useradd srcds &&\
-    apt-get update -y &&\
+RUN apt-get update -y &&\
     export DEBIAN_FRONTEND=noninteractive &&\
     apt-get install -y software-properties-common apt-utils &&\
     dpkg --add-architecture i386 &&\
@@ -19,8 +17,9 @@ RUN useradd srcds &&\
     # Dumb steamcmd fix, because Valve doesn't know how to properly shell script :/ 
     # (they try to symlink files into a nonexistent directory on purpose, which obviously fails)
     sed -i '\|ln -s "$STEAMROOT" ~/.steam/root|i\\tmkdir ~/.steam' /usr/games/steamcmd &&\
+    useradd srcds &&\
     mkdir ./server &&\
-    chmod +x /docker-container-entry.sh &&\
+    chown srcds:srcds -R ./ &&\
     chmod +x /docker-container-run.sh
-ENTRYPOINT ["/bin/bash", "/docker-container-entry.sh"]
+USER srcds
 CMD ["/bin/bash", "/docker-container-run.sh"]
