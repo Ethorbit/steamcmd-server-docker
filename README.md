@@ -11,7 +11,7 @@ A docker image that installs and runs an srcds server for the specified game.
 
 ## Examples
 * Creating a Garry's Mod server 
-```docker run -dit -v /home/ethorbit/Servers/my-gmod-server:/home/srcds/server --env SRCDS_APPID=4020 --env SRCDS_RUN_ARGS='-port 27015 -tickrate 66 +gamemode "sandbox" +map "gm_construct"' -p 27015:27015/udp --restart always --name "my-gmod-server" ethorbit/srcds-server:latest```
+```docker run -dit -v /home/ethorbit/Servers/my-gmod-server:/home/srcds/server --user ethorbit:ethorbit --env SRCDS_APPID=4020 --env SRCDS_RUN_ARGS='-port 27015 -tickrate 66 +gamemode "sandbox" +map "gm_construct"' -p 27015:27015/udp --restart always --name "my-gmod-server" ethorbit/srcds-server:latest```
 
 * Using the console of a detached server: ```docker container attach "my-gmod-server"``` 
 
@@ -44,10 +44,6 @@ These are already configured automatically:
 So don't pass them, modify the generated start.sh script instead.
 
 This can only be used on the first launch, but you can always change it in start.sh.
-
-* `USER_ID` `GROUP_ID`
-
-The user and group ids that the docker container will run under. You'll want this to match the user you plan to modify the files on (so that there's no permission issues), you can also add yourself to the group to give yourself permissions.
 
 * `SRCDS_AUTOVALIDATE`
 
