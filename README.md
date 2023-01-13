@@ -17,7 +17,8 @@ A docker image that installs and runs an srcds server for the specified game.
 
     You can press Ctrl+P, Ctrl+Q to detach again without closing the server
 
-## Environment Variables
+## Build Arguments
+
 * `PUID` `PGID`
 
 The default UID and GID is set to 1000.
@@ -30,8 +31,14 @@ Rebuild the Dockerfile if these need to be changed:
 The Timezone, which is set to "Etc/UTC" by default.
 
 You can either rebuild the dockerfile to change it, login to the container 
-as root and set it with commands, or mount the host's 
+as root and change the timezone with commands, or mount the host's 
 /etc/localtime and /etc/timezone to the container's.
+
+## Environment Variables
+
+* `UMASK`
+
+Set the umask for files installed by steamcmd
 
 * `SRCDS_APPID`
 
