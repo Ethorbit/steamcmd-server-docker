@@ -21,11 +21,17 @@ A docker image that installs and runs an srcds server for the specified game.
 * `PUID` `PGID`
 
 The default UID and GID is set to 1000.
-Rebuild the Dockerfile if these need to be changed: `docker build --build-arg PUID=420 --build-arg PGID=420 -t my-srcds-server ./`
+Rebuild the Dockerfile if these need to be changed: 
+
+`docker build --build-arg PUID=420 --build-arg PGID=420 -t my-srcds-server ./`
 
 * `TZ`
 
 The Timezone, which is set to "Etc/UTC" by default.
+
+You can either rebuild the dockerfile to change it, login to the container 
+as root and set it with commands, or mount the host's 
+/etc/localtime and /etc/timezone to the container's.
 
 * `SRCDS_APPID`
 
