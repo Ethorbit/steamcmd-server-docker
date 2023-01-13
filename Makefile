@@ -1,16 +1,16 @@
 build: ./Dockerfile
-	docker build -t ethorbit/srcds-server:development ./
+	docker build --no-cache=true --build-arg TZ="America/Los_Angeles" -t ethorbit/srcds-server:development ./
 
 ifndef VOLUME 
 VOLUME := "mygmodserver"
 endif
 
-ifdef USER_ID
-user_string := --user "$(USER_ID)"
+ifdef UID
+user_string := --user "$(UID)"
 endif
 
-ifdef GROUP_ID
-user_string := $(user_string):"$(GROUP_ID)"
+ifdef GID
+user_string := $(user_string):"$(GID)"
 endif
 
 .PHONY test: build
