@@ -38,7 +38,7 @@ as root and change the timezone with commands, or mount the host's
 
 * `UMASK`
 
-Set the umask for files installed by steamcmd
+Set the umask for files installed by steamcmd, which is '0027' by default.
 
 * `SRCDS_APPID`
 
