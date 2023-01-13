@@ -18,6 +18,15 @@ A docker image that installs and runs an srcds server for the specified game.
     You can press Ctrl+P, Ctrl+Q to detach again without closing the server
 
 ## Environment Variables
+* `PUID` `PGID`
+
+The default UID and GID is set to 1000.
+Rebuild the Dockerfile if these need to be changed: `docker build --build-arg PUID=420 --build-arg PGID=420 -t my-srcds-server ./`
+
+* `TZ`
+
+The Timezone, which is set to "Etc/UTC" by default.
+
 * `SRCDS_APPID`
 
 This is the Steam game's appid that you want srcds to install. (See https://developer.valvesoftware.com/wiki/Steam_Application_IDs)

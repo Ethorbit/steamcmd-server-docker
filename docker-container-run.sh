@@ -1,4 +1,6 @@
 #!/bin/bash
+umask "$UMASK"
+
 DIR="/home/srcds"
 UPDATE_SCRIPT_NAME="update.sh"
 UPDATE_SCRIPT="$DIR/server/$UPDATE_SCRIPT_NAME"
