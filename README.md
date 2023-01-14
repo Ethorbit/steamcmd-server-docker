@@ -27,8 +27,6 @@ The default UID and GID is set to 1000.
 
 The Timezone, which is set to "Etc/UTC" by default.
 
-You can also mount the host's /etc/localtime and /etc/timezone to the container.
-
 ### Example:
 
 `docker build --build-arg TZ="America/Los_Angeles" --build-arg PUID=420 --build-arg PGID=420 -t my-srcds-server ./`
