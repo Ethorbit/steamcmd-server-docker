@@ -27,7 +27,7 @@ The default UID and GID is set to 1000.
 
 The Timezone, which is set to "Etc/UTC" by default.
 
-You can also mount the host's /etc/localtime and /etc/timezone to the container's.
+You can also mount the host's /etc/localtime and /etc/timezone to the container.
 
 ### Example:
 
@@ -41,7 +41,7 @@ Set the umask for files installed by steamcmd, which is '0027' by default.
 
 * `SRCDS_APPID`
 
-This is the Steam game's appid that you want srcds to install. (See https://developer.valvesoftware.com/wiki/Steam_Application_IDs)
+This is the Steam game's appid that you want steamcmd to install. (See https://developer.valvesoftware.com/wiki/Steam_Application_IDs)
 
 
 This can only be used on the first launch, but you can modify the generated update.sh script.
@@ -104,5 +104,5 @@ You can solve this in one of two ways:
     <summary>Automatically</summary>
 
     
-There isn't a way to do this automatically, but you can create your own container which is based off of this one, and has the required dependencies [like done here for Sven Co-op](https://github.com/Ethorbit/svencoop-ds-docker)
+There isn't a way to do this automatically, but you can create your own image which is based off of this one, and has the required dependencies [like done here for Sven Co-op](https://github.com/Ethorbit/svencoop-ds-docker)
 </details>
