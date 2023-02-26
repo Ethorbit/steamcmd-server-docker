@@ -22,13 +22,13 @@ if [ ! -f "$UPDATE_SCRIPT" ]; then
 	fi
 
 	echo "#!/bin/sh" >> "$UPDATE_SCRIPT"
-	echo "steamcmd +force_install_dir \"$DIR/server\" +login anonymous +app_update $SRCDS_APPID validate +exit" >> "$DIR/server/update.sh"
+    echo "steamcmd +force_install_dir \"$DIR/server\" +login anonymous +app_update $SRCDS_APPID validate +exit" >> "$DIR/server/update.sh"
 	chmod +x "$UPDATE_SCRIPT"
 fi
 
 if [ ! -f "$AUTO_VALIDATE_SCRIPT" ]; then
 	echo "#!/bin/sh" >> "$AUTO_VALIDATE_SCRIPT"
-	echo "while true; do" >> "$AUTO_VALIDATE_SCRIPT"
+    echo "while true; do" >> "$AUTO_VALIDATE_SCRIPT"
 	echo "nohup \"$UPDATE_SCRIPT\" > /dev/null 2>&1" >> "$AUTO_VALIDATE_SCRIPT"
 	echo "sleep $SRCDS_VALIDATE_INTERVAL" >> "$AUTO_VALIDATE_SCRIPT"
 	echo "done &" >> "$AUTO_VALIDATE_SCRIPT"
@@ -38,7 +38,7 @@ fi
 if [ ! -f "$START_SCRIPT" ]; then
 	rm "$DIR/server/start.sh"
 	echo "#!/bin/sh" >> "$START_SCRIPT"
-	echo "\"$DIR/server/$SRCDS_RUN_BINARY\" -autoupdate -steam_dir /home/srcds/.steam/steamcmd -steamcmd_script /home/srcds/server/update.sh $SRCDS_RUN_ARGS" >> "$START_SCRIPT"
+    echo "\"$DIR/server/$SRCDS_RUN_BINARY\" -autoupdate -steam_dir /home/srcds/.steam/steamcmd -steamcmd_script /home/srcds/server/update.sh $SRCDS_RUN_ARGS" >> "$START_SCRIPT"
 	chmod +x "$START_SCRIPT"
 fi
 

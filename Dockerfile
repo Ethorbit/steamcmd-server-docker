@@ -8,7 +8,7 @@ ENV UMASK="0027"
 ENV PATH="$PATH:/usr/games"
 ENV SRCDS_RUN_BINARY="srcds_run"
 ENV SRCDS_RUN_ARGS=""
-COPY ./docker-container-run.sh /docker-container-run.sh
+COPY ./entrypoint.sh /entrypoint.sh
 WORKDIR /home/srcds/
 RUN export DEBIAN_FRONTEND=noninteractive &&\
     sed -i "s]htt\(p\|ps\)://archive.ubuntu.com/]$MIRROR]g" /etc/apt/sources.list &&\
@@ -40,6 +40,6 @@ RUN export DEBIAN_FRONTEND=noninteractive &&\
     useradd -m -u "$PUID" -g "$PGID" srcds &&\
     mkdir ./server &&\  
     chown srcds:srcds -R ./ &&\ 
-    chmod +x /docker-container-run.sh
+    chmod +x /entrypoint.sh
 USER srcds
-CMD ["/bin/bash", "/docker-container-run.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
