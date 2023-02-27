@@ -40,6 +40,7 @@ RUN export DEBIAN_FRONTEND=noninteractive &&\
     useradd -m -u "$PUID" -g "$PGID" srcds &&\
     mkdir ./server &&\  
     chown srcds:srcds -R ./ &&\ 
+    chmod g+s ./server &&\
     chmod +x /entrypoint.sh
 USER srcds
 ENTRYPOINT ["/entrypoint.sh"]
