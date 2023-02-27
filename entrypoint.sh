@@ -1,4 +1,5 @@
 #!/bin/bash
+MODE= && for n in $(echo "$UMASK" | fold -w1); do n=$((7 - $n)) MODE="$MODE$n"; done
 umask "$UMASK"
 
 DIR="/home/srcds"
@@ -51,7 +52,8 @@ if [ -z "$SRCDS_AUTOVALIDATE" ]; then
 fi
 
 function start_server {
-	echo "Starting server..."
+    echo "Starting server..."
+    chmod -R "$MODE" "$DIR/server/"
 	"$START_SCRIPT"
 }
 
