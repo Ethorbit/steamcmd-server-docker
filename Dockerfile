@@ -8,6 +8,7 @@ ENV UMASK="027"
 ENV PATH="$PATH:/usr/games"
 ENV SRCDS_RUN_BINARY="srcds_run"
 ENV SRCDS_RUN_ARGS=""
+ENV SRCDS_RECURSIVE_FILE_PERMISSIONS=0
 COPY ./entrypoint.sh /entrypoint.sh
 WORKDIR /home/srcds/
 RUN export DEBIAN_FRONTEND=noninteractive &&\

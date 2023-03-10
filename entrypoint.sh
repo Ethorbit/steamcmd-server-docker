@@ -53,7 +53,11 @@ fi
 
 function start_server {
     echo "Starting server..."
-    chmod -R "$MODE" "$DIR/server/"
+    
+    if [[ "$SRCDS_RECURSIVE_FILE_PERMISSIONS" -gt 0 ]]; then
+        chmod -R "$MODE" "$DIR/server/"
+    fi
+    
 	"$START_SCRIPT"
 }
 
