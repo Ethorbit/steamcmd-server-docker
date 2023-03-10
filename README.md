@@ -39,7 +39,7 @@ Set the umask for files installed by steamcmd, which is '0027' by default.
 
 * `SRCDS_RECURSIVE_FILE_PERMISSIONS`
 
-Set the UMASK to all existing files before starting server. This is off by default, which means only files created during installation have the UMASK applied.
+Set the UMASK to all existing files before starting server. This is off by default, which means only new files from installation have the UMASK applied.
 
 * `SRCDS_APPID`
 
