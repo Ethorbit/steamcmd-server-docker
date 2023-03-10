@@ -37,6 +37,10 @@ The Timezone, which is set to "Etc/UTC" by default.
 
 Set the umask for files installed by steamcmd, which is '0027' by default.
 
+* `SRCDS_RECURSIVE_FILE_PERMISSIONS`
+
+Set the umask permissions for all existing files each time before starting the server. This is off by default, which means only new files during installation get the permissions.
+
 * `SRCDS_APPID`
 
 This is the Steam game's appid that you want steamcmd to install. (See https://developer.valvesoftware.com/wiki/Steam_Application_IDs)
