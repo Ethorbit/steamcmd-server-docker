@@ -1,9 +1,9 @@
 FROM steamcmd-server
 USER root
-ENV APPID=276060
-COPY ./start.sh "${STARTSCRIPT}"
-RUN chown ${USER}:${USER} "${STARTSCRIPT}" &&\
-    chmod +x "${STARTSCRIPT}" &&\
+ENV APP_ID=276060
+COPY ./start.sh "${START_SCRIPT}"
+RUN chown ${USER}:${USER} "${START_SCRIPT}" &&\
+    chmod +x "${START_SCRIPT}" &&\
     export DEBIAN_FRONTEND=noninteractive &&\
     dpkg --add-architecture i386 &&\
     apt update &&\
@@ -13,5 +13,5 @@ RUN chown ${USER}:${USER} "${STARTSCRIPT}" &&\
         zlib1g:i386 &&\
     apt-get remove --purge --auto-remove -y &&\
 	rm -rf /var/lib/apt/lists/*
-VOLUME "${SERVERDIR}"
+VOLUME "${SERVER_DIR}"
 USER ${USER}

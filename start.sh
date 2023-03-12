@@ -1,36 +1,43 @@
 #!/bin/bash
 umask "$UMASK"
 
-if [[ ! -f "$UPDATESCRIPT" ]]; then
-	if [[ -z "$APPID" ]]; then
+if [[ ! -f "$STEAMCMD_UPDATE_SCRIPT" ]]; then
+	if [[ -z "$APP_ID" ]]; then
 		echo "Can't install! No App ID specified!"
 		exit
 	fi
 
     printf '@NoPromptForPassword 1\nforce_install_dir "%s"\nlogin anonymous\napp_update %i validate\nquit' \
-        "$SERVERDIR" "$APPID" >> "$UPDATESCRIPT"
-    chmod +x "$UPDATESCRIPT"
+    "$SERVER_DIR" "$APP_ID" >> "$STEAMCMD_UPDATE_SCRIPT"
+    chmod +x "$STEAMCMD_UPDATE_SCRIPT"
 fi
 
-if [[ ! -f "$STARTSCRIPT" ]]; then
-	printf '#!/bin/bash\n# Your server start command here' >> "$STARTSCRIPT"
-    chmod +x "$STARTSCRIPT"
+if [[ ! -f "$UPDATE_SCRIPT" ]]; then 
+    printf '#!/bin/bash\n"%s" +runscript "%s"' \
+        "$STEAMCMD_DIR/steamcmd.sh" "$STEAMCMD_UPDATE_SCRIPT" >> "$UPDATE_SCRIPT"
+    chmod +x "$UPDATE_SCRIPT"
+fi
+
+if [[ ! -f "$START_SCRIPT" ]]; then
+	printf '#!/bin/bash\n# Your server start command here' >> "$START_SCRIPT"
+    chmod +x "$START_SCRIPT"
 fi
 
 function start_server {
     echo "Starting server..."
-	"$STARTSCRIPT"
+	"$START_SCRIPT"
 }
 
 function install_server {
 	echo "Installing server..."
-    "$STEAMCMDDIR/steamcmd.sh" +runscript "$UPDATESCRIPT"
+    "$UPDATE_SCRIPT"
 }
 
-cd "$SERVERDIR/" 
+cd "$SERVER_DIR/" 
 
-if [[ `ls "$SERVERDIR" --ignore $(basename "${UPDATESCRIPT}") \
-    --ignore $(basename "${STARTSCRIPT}") | wc -l` -eq 0 ]]; then
+if [[ `ls "$SERVER_DIR" --ignore $(basename "${STEAMCMD_UPDATE_SCRIPT}") \
+    --ignore $(basename "${UPDATE_SCRIPT}") \
+    --ignore $(basename "${START_SCRIPT}") | wc -l` -eq 0 ]]; then
 	install_server
 fi
 

@@ -22,8 +22,10 @@ See the [existing implementations](servers)
 ### Environment variables
 These variables should be used whereever possible.
 * `USER`
-* `HOMEDIR`
-* `STEAMCMDDIR`
-* `SERVERDIR`
-* `UPDATESCRIPT`
-* `STARTSCRIPT`
+* `HOME_DIR`
+* `STEAMCMD_DIR`           - where steamcmd binaries are
+* `SERVER_DIR`             - where the server installs
+* `STEAMCMD_UPDATE_SCRIPT` - txt update file using steamcmd update syntax
+* `UPDATE_SCRIPT`          - shell script that executes STEAMCMD\_UPDATE\_SCRIPT
+* `START_SCRIPT`           - shell script to start the game server
+* `APP_ID`                 - game server's appid

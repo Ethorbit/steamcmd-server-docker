@@ -1,3 +1,3 @@
 #!/bin/bash 
-"${SERVERDIR}/srcds_run" -autoupdate -steam_dir "${STEAMCMDDIR}" -steamcmd_script "${UPDATESCRIPT}" "${STARTARGS}"
+"${SERVER_DIR}/srcds_run" -autoupdate -steam_dir "${STEAMCMD_DIR}" -steamcmd_script "${STEAMCMD_UPDATE_SCRIPT}" "${START_ARGS}"
 
