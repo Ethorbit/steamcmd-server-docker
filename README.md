@@ -9,11 +9,6 @@ See the [existing implementations](servers)
 ## Creating container from server image
 `docker run -it --rm -p 27015:27015/udp -v myserver:/home/steam/server <server image>`
 
-| Existing Images |
-| --------------- |
-| [gmod-server](https://hub.docker.com/r/ethorbit/gmod-server) |
-| [svencoop-server](https://hub.docker.com/r/ethorbit/svencoop-server) |
-
 ## Creating new server image 
 
 ### Steps
