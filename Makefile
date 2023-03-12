@@ -13,7 +13,7 @@ build:
 
 .PHONY: test
 test:
-	docker run -it --rm -v $(image):/home/steam/server --name $(image) $(image) $(command)
+	docker run -it --rm -p 27015:27015/udp -v $(image):/home/steam/server --name $(image) $(image) $(command)
 
 .PHONY: push
 push:
