@@ -4,10 +4,10 @@
 # steamcmd-server
 An image based on [steamcmd](https://github.com/CM2Walki/steamcmd) designed for self-installing game servers. Server images can have their own App ID, start and update scripts. 
 
-## Creating a container from an existing server image
+## Creating container from a server image
 `docker run -it --rm -v myserver:/home/steam/server <server image>`
 
-## Creating a new server image 
+## Creating new server image 
 See the [existing implementations](servers) which are based on [steamcmd-server](Dockerfile)
 
 Every directory inside is the name of the docker image. 
