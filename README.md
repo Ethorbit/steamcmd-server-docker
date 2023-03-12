@@ -31,5 +31,5 @@ These variables should be used whereever possible.
 * `STEAMCMD_UPDATE_SCRIPT` - txt update file using steamcmd update syntax
 * `UPDATE_SCRIPT`          - shell script that executes STEAMCMD\_UPDATE\_SCRIPT
 * `START_SCRIPT`           - shell script to start the game server
-* `START_ARGS`             - arguments of the server executable which would be passed via START\_SCRIPT
+* `START_ARGS`             - arguments of the server executable which would be read in START\_SCRIPT
 * `APP_ID`                 - game server's appid
