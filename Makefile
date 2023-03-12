@@ -1,5 +1,5 @@
-files := ./servers/*
 docker_user := "ethorbit"
+files := ./servers/*
 
 .PHONY: build
 build:
