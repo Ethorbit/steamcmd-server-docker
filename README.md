@@ -21,8 +21,8 @@ These variables should be used whereever possible.
 
 ### Steps
 * Change docker\_user inside the [Makefile](Makefile) to your DockerHub's username.
-* Create an image to add support for a new game.
-* Run `make build` to build every image.
-* Run `image=<name here> make test` to ensure it works.
-* Run `make push` to upload all the changes to DockerHub.
-* Optionally create a pull request to add your image to this repo
+* [Create a new game image](servers)
+* Build everything: `make build`
+* Test image: `image=<name here> make test`
+* Upload changes: `make push`
+* [Create a pull request](https://github.com/Ethorbit/Docker-Srcds/pulls) to add your image here
