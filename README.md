@@ -19,6 +19,7 @@ These variables should be used whereever possible.
 * `UPDATESCRIPT`
 * `STARTSCRIPT`
 
+### Steps
 * Change docker\_user inside the [Makefile](Makefile) to your DockerHub's username.
 * Create an image to add support for a new game.
 * Run `make build` to build every image.
