@@ -1,4 +1,4 @@
-FROM ethorbit/steamcmd-server
+FROM steamcmd-server
 USER root
 ENV APPID=276060
 COPY ./start.sh "${STARTSCRIPT}"
