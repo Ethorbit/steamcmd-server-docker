@@ -10,7 +10,7 @@ An image based on [steamcmd](https://github.com/CM2Walki/steamcmd) designed for 
 ## Creating new server image 
 See the [existing implementations](servers) which are based on [steamcmd-server](Dockerfile)
 
-Every directory inside is the name of the docker image. 
+Every directory inside is a separate docker image. 
 
 ### Environment variables
 These variables should be used whereever possible.
