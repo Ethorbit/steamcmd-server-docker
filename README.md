@@ -19,7 +19,7 @@ You can also look for pre-built images [here](https://hub.docker.com/u/ethorbit)
 * Create a new game image inside servers/
 * Build everything: `make build`
 * Test it: `image=<name here> make test`
-* Upload changes by changing the Makefile's docker\_user to match your DockerHub username and then run: `make push`
+* Upload changes by changing the Makefile's docker\_user to match your DockerHub username and running: `make push`
 * [Create a pull request](https://github.com/Ethorbit/steamcmd-server-docker/pulls) to add the image to this repo.
 
 ### Environment variables
