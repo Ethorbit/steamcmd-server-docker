@@ -1,5 +1,5 @@
-[![build](https://github.com/Ethorbit/Docker-Srcds/actions/workflows/docker-image.yml/badge.svg)](https://github.com/Ethorbit/Docker-Srcds/actions/workflows/docker-image.yml)
-[![issues](https://img.shields.io/github/issues/Ethorbit/Docker-Srcds)](https://github.com/Ethorbit/Docker-Srcds/issues?q=is%3Aopen+is%3Aissue)
+[![build](https://github.com/Ethorbit/steamcmd-server-docker/actions/workflows/docker-image.yml/badge.svg)](https://github.com/Ethorbit/steamcmd-server-docker/actions/workflows/docker-image.yml)
+[![issues](https://img.shields.io/github/issues/Ethorbit/steamcmd-server-docker)](https://github.com/Ethorbit/steamcmd-server-docker/issues?q=is%3Aopen+is%3Aissue)
 
 # steamcmd-server
 [A Docker image](Dockerfile) based on [steamcmd](https://github.com/CM2Walki/steamcmd) designed for self-installing game servers. [Server images](servers) can have their own App ID, start and update scripts. 
@@ -20,7 +20,7 @@ You can also look for pre-built images [here](https://hub.docker.com/u/ethorbit)
 * Build everything: `make build`
 * Test it: `image=<name here> make test`
 * Upload changes by changing the Makefile's docker\_user to match your DockerHub username and then run: `make push`
-* [Create a pull request](https://github.com/Ethorbit/Docker-Srcds/pulls) to add the image to this repo.
+* [Create a pull request](https://github.com/Ethorbit/steamcmd-server-docker/pulls) to add the image to this repo.
 
 ### Environment variables
 These variables should be used whereever possible.
