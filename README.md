@@ -21,7 +21,7 @@ These variables should be used whereever possible.
 
 ### Steps
 * Change docker\_user inside the [Makefile](Makefile) to your DockerHub's username.
-* [Create a new game image](servers)
+* Create a new game image inside servers
 * Build everything: `make build`
 * Test image: `image=<name here> make test`
 * Upload changes: `make push`
