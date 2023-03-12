@@ -6,18 +6,17 @@
 
 See the [existing implementations](servers)
 
-## Creating container from server image
+## Creating container from [existing server image](servers)
 `docker run -it --rm -p 27015:27015/udp -v myserver:/home/steam/server <server image>`
 
 ## Creating new server image 
 
 ### Steps
-* Change docker\_user inside the Makefile to your DockerHub's username.
-* Create a new game image inside servers
+* Create a new game image inside servers/
 * Build everything: `make build`
 * Test it: `image=<name here> make test`
-* Upload changes: `make push`
-* [Create a pull request](https://github.com/Ethorbit/Docker-Srcds/pulls) to add it here
+* Upload changes by changing the Makefile's docker\_user to match your DockerHub username and then run: `make push`
+* [Create a pull request](https://github.com/Ethorbit/Docker-Srcds/pulls) to add the image to this repo.
 
 ### Environment variables
 These variables should be used whereever possible.
