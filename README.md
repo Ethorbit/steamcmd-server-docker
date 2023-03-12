@@ -7,7 +7,7 @@
 See the [existing implementations](servers)
 
 ## Creating container from server image
-`docker run -it --rm -v myserver:/home/steam/server <server image>`
+`docker run -it --rm -p 27015:27015/udp -v myserver:/home/steam/server <server image>`
 
 ## Creating new server image 
 
