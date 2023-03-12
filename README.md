@@ -15,6 +15,8 @@ Every directory inside is a separate docker image.
 ### Environment variables
 These variables should be used whereever possible.
 * `USER`
+* `HOMEDIR`
+* `STEAMCMDDIR`
 * `SERVERDIR`
 * `UPDATESCRIPT`
 * `STARTSCRIPT`
