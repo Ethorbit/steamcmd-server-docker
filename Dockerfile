@@ -3,10 +3,11 @@ USER root
 ARG PUID=1000
 ARG PGID=1000
 ENV UMASK=027
-ENV APPID=
 ENV SERVERDIR="${HOMEDIR}/server"
 ENV UPDATESCRIPT="${SERVERDIR}/update.txt"
 ENV STARTSCRIPT="${SERVERDIR}/start.sh"
+ENV APPID=
+ENV STARTARGS=
 COPY /start.sh /start.sh
 RUN usermod -u ${PUID} ${USER} &&\
     groupmod -g ${PGID} ${USER} &&\

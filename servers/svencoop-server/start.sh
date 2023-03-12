@@ -1,3 +1,3 @@
 #!/bin/bash
-"${SERVERDIR}/svends_run" -autoupdate -steam_dir "${STEAMCMDDIR}" -steamcmd_script "${UPDATESCRIPT}"
+"${SERVERDIR}/svends_run" -autoupdate -steam_dir "${STEAMCMDDIR}" -steamcmd_script "${UPDATESCRIPT}" "${STARTARGS}"
 
