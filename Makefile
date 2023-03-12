@@ -1,28 +1,21 @@
-build: ./Dockerfile ./entrypoint.sh
-	docker build --no-cache=true --build-arg TZ="America/Los_Angeles" -t ethorbit/srcds-server:development ./
-	touch $@
+docker_user := "ethorbit"
+files := ./servers/*
 
-ifndef VOLUME 
-VOLUME := "mygmodserver"
-endif
+.PHONY: build test push
 
-ifdef UID
-user_string := --user "$(UID)"
-endif
+build:
+	docker build -t steamcmd-server ./
+	find $(files) -maxdepth 1 -type d -exec \
+		/bin/sh -c 'dirname=$$(basename {}) &&\
+		docker build -t $$dirname {} &&\
+		docker volume rm -f $$dirname' \;
 
-ifdef GID
-user_string := $(user_string):"$(GID)"
-endif
+test:
+	docker run -it --rm -p 27015:27015/udp -v $(image):/home/steam/server --name $(image) $(image) $(command)
 
-.PHONY: test
-test: build
-	docker run -it \
-		--name my-gmod-server \
-		--rm \
-		$(user_string) \
-		-p "27015:27015/udp" \
-		-v $(VOLUME):/home/srcds/server \
-		-e UMASK="0007" \
-		-e SRCDS_APPID="4020" \
-		-e SRCDS_RUN_ARGS="-port 27015 -tickrate 66 +gamemode 'sandbox' +map 'gm_construct'" \
-		ethorbit/srcds-server:development
+push:
+	find $(files) -maxdepth 1 -type d -exec \
+		/bin/sh -c 'dirname=$$(basename {}) &&\
+		docker tag $$dirname $(docker_user)/$$dirname:$$(git rev-parse --short HEAD) &&\
+		docker tag $$dirname $(docker_user)/$$dirname:latest &&\
+		docker push -a $(docker_user)/$$dirname' \;

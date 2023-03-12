@@ -1,47 +1,23 @@
-FROM ubuntu:jammy
+FROM cm2network/steamcmd
+USER root
 ARG PUID=1000
 ARG PGID=1000
-ARG MIRROR="http://archive.ubuntu.com/"
-ARG TZ="Etc/UTC"
-ENV TZ=${TZ}
-ENV UMASK="027"
-ENV PATH="$PATH:/usr/games"
-ENV SRCDS_RUN_BINARY="srcds_run"
-ENV SRCDS_RUN_ARGS=""
-ENV SRCDS_RECURSIVE_FILE_PERMISSIONS=0
-COPY ./entrypoint.sh /entrypoint.sh
-WORKDIR /home/srcds/
-RUN export DEBIAN_FRONTEND=noninteractive &&\
-    sed -i "s]htt\(p\|ps\)://archive.ubuntu.com/]$MIRROR]g" /etc/apt/sources.list &&\
-    apt-get update -y &&\
-    \
-    echo "###### Timezone ######" &&\
-    apt-get install -y tzdata &&\    
-    ln -snf "/usr/share/zoneinfo/$TZ" /etc/localtime &&\
-    echo $TZ > /etc/timezone &&\
-    dpkg-reconfigure tzdata &&\
-    \
-    echo "###### Steamcmd ######" &&\
-    apt-get install -y software-properties-common apt-utils &&\
-    dpkg --add-architecture i386 &&\
-    apt-get update -y &&\
-    echo steam steam/question select "I AGREE" | debconf-set-selections &&\
-    apt-get install --no-install-recommends --no-install-suggests -y \
-                wget dialog lib32gcc-s1 steamcmd=0~20180105-4 libtinfo5:i386 \
-                libncurses5:i386 libcurl3-gnutls:i386 \
-                libsdl2-2.0-0:i386 &&\
-    \
-    echo "###### Steamcmd fix, because Valve tries to symlink files to a nonexistent" &&\
-    echo "directory, which obviously fails #######" &&\
-    sed -i '\|ln -s "$STEAMROOT" ~/.steam/root|i\\tmkdir ~/.steam' /usr/games/steamcmd &&\ 
-    apt-get clean &&\
-    \
-    echo "###### Srcds user ######" &&\ 
-    groupadd -g "$PGID" srcds &&\
-    useradd -m -u "$PUID" -g "$PGID" srcds &&\
-    mkdir ./server &&\  
-    chown srcds:srcds -R ./ &&\ 
-    chmod g+s ./server &&\
-    chmod +x /entrypoint.sh
-USER srcds
-ENTRYPOINT ["/entrypoint.sh"]
+ENV UMASK=027
+ENV HOME_DIR=${HOMEDIR}
+ENV STEAMCMD_DIR=${STEAMCMDDIR}
+ENV SERVER_DIR="${HOMEDIR}/server"
+ENV STEAMCMD_UPDATE_SCRIPT="${SERVER_DIR}/steam_update.txt"
+ENV UPDATE_SCRIPT="${SERVER_DIR}/update.sh"
+ENV START_SCRIPT="${SERVER_DIR}/start.sh"
+ENV APP_ID=
+ENV START_ARGS=
+COPY /start.sh /start.sh
+RUN usermod -u ${PUID} ${USER} &&\
+    groupmod -g ${PGID} ${USER} &&\
+    chown ${USER}:${USER} /start.sh &&\
+    chmod +x /start.sh &&\
+    mkdir "${SERVER_DIR}" &&\
+    chown ${USER}:${USER} "${SERVER_DIR}"
+WORKDIR "${SERVER_DIR}"
+USER ${USER}
+CMD ["/start.sh"]
