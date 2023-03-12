@@ -25,4 +25,4 @@ These variables should be used whereever possible.
 * Build everything: `make build`
 * Test it: `image=<name here> make test`
 * Upload changes: `make push`
-* [Create a pull request](https://github.com/Ethorbit/Docker-Srcds/pulls) to add your image here
+* [Create a pull request](https://github.com/Ethorbit/Docker-Srcds/pulls) to add it here
