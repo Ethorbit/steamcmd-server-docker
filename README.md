@@ -9,7 +9,7 @@ See the [existing implementations](servers)
 ## Creating container from [existing server image](servers)
 `make build`
 
-`docker run -it --rm -p 27015:27015/udp -v myserver:/home/steam/server <server image>`
+`docker run -it --rm -e START_ARGS="" -p 27015:27015/udp -v myserver:/home/steam/server <server image>`
 
 You can also look for pre-built images [here](https://hub.docker.com/u/ethorbit).
 
@@ -31,4 +31,5 @@ These variables should be used whereever possible.
 * `STEAMCMD_UPDATE_SCRIPT` - txt update file using steamcmd update syntax
 * `UPDATE_SCRIPT`          - shell script that executes STEAMCMD\_UPDATE\_SCRIPT
 * `START_SCRIPT`           - shell script to start the game server
+* `START_ARGS`             - arguments of the server executable which would be passed via START\_SCRIPT
 * `APP_ID`                 - game server's appid
