@@ -11,12 +11,9 @@ build:
 		docker image tag $$dirname $(docker_user)/$$dirname &&\
 		docker volume rm -f $$dirname' \;
 
-.PHONY: test clean
+.PHONY: test
 test:
 	docker run -it --rm -v $(image):/home/steam/server --name $(image) $(image) $(command)
-
-clean:
-	docker volume rm -f $(image)
 
 .PHONY: push
 push:
