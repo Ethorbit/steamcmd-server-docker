@@ -2,7 +2,7 @@
 [![issues](https://img.shields.io/github/issues/Ethorbit/Docker-Srcds)](https://github.com/Ethorbit/Docker-Srcds/issues?q=is%3Aopen+is%3Aissue)
 
 # steamcmd-server
-An image based on [steamcmd](https://github.com/CM2Walki/steamcmd) designed for self-installing game servers. Server images can have their own App ID as well as start and update scripts. 
+An image based on [steamcmd](https://github.com/CM2Walki/steamcmd) designed for self-installing game servers. Server images can have their own App ID, start and update scripts. 
 
 ## Creating a container from an existing server image
 `docker run -it --rm -v myserver:/home/steam/server <server image>`
