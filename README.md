@@ -20,7 +20,7 @@ These variables should be used whereever possible.
 * `STARTSCRIPT`
 
 ### Steps
-* Change docker\_user inside the [Makefile](Makefile) to your DockerHub's username.
+* Change docker\_user inside the Makefile to your DockerHub's username.
 * Create a new game image inside servers
 * Build everything: `make build`
 * Test image: `image=<name here> make test`
