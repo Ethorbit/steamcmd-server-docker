@@ -1,6 +1,8 @@
 FROM ethorbit/steamcmd-server
 USER root
 ENV APPID=4020
-ENV RUNARGS=
-ENV STARTCOMMAND="${SERVERDIR}/srcds_run -autoupdate -steam_dir \"${STEAMCMDDIR}\" -steamcmd_script ${SERVERDIR}/update.sh ${RUNARGS}"
+COPY ./start.sh "${STARTSCRIPT}"
+RUN chown ${USER}:${USER} "${STARTSCRIPT}" &&\
+    chmod +x "${STARTSCRIPT}"
+VOLUME "${SERVERDIR}"
 USER ${USER}

@@ -2,10 +2,11 @@ FROM cm2network/steamcmd
 USER root
 ARG PUID=1000
 ARG PGID=1000
-ENV SERVERDIR="${HOMEDIR}/server"
-ENV APPID=
 ENV UMASK=027
-ENV STARTCOMMAND=
+ENV APPID=
+ENV SERVERDIR="${HOMEDIR}/server"
+ENV UPDATESCRIPT="${SERVERDIR}/update.txt"
+ENV STARTSCRIPT="${SERVERDIR}/start.sh"
 COPY /start.sh /start.sh
 RUN usermod -u ${PUID} ${USER} &&\
     groupmod -g ${PGID} ${USER} &&\
@@ -13,6 +14,6 @@ RUN usermod -u ${PUID} ${USER} &&\
     chmod +x /start.sh &&\
     mkdir ${SERVERDIR} &&\
     chown ${USER}:${USER} ${SERVERDIR}
-VOLUME ${SERVERDIR}
+WORKDIR ${SERVERDIR}
 USER ${USER}
 CMD ["/start.sh"]
