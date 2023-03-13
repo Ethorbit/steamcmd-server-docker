@@ -1,5 +1,6 @@
 docker_user := "ethorbit"
 files := ./servers/*
+git_hash := $(shell git rev-parse --short HEAD)
 
 .PHONY: build test push
 
@@ -7,7 +8,7 @@ build:
 	docker build -t steamcmd-server ./
 	find $(files) -maxdepth 1 -type d -exec \
 		/bin/sh -c 'dirname=$$(basename {}) &&\
-		docker build -t $$dirname {} &&\
+		docker build -t $(docker_user)/$$dirname:latest -t $(docker_user)/$$dirname:$(git_hash) {} &&\
 		docker volume rm -f $$dirname' \;
 
 test:
@@ -16,6 +17,6 @@ test:
 push:
 	find $(files) -maxdepth 1 -type d -exec \
 		/bin/sh -c 'dirname=$$(basename {}) &&\
-		docker tag $$dirname $(docker_user)/$$dirname:$$(git rev-parse --short HEAD) &&\
-		docker tag $$dirname $(docker_user)/$$dirname:latest &&\
-		docker push -a $(docker_user)/$$dirname' \;
+		docker push $(docker_user)/$$dirname:$(git_hash) &&\
+		docker push $(docker_user)/$$dirname:latest' \;
+
