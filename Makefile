@@ -8,7 +8,7 @@ build:
 	docker build -t steamcmd-server ./
 	find $(files) -maxdepth 1 -type d -exec \
 		/bin/sh -c 'dirname=$$(basename {}) &&\
-		docker build -t $(docker_user)/$$dirname:latest -t $(docker_user)/$$dirname:$(git_hash) {} &&\
+		docker build -t $$dirname -t $(docker_user)/$$dirname:latest -t $(docker_user)/$$dirname:$(git_hash) {} &&\
 		docker volume rm -f $$dirname' \;
 
 test:
