@@ -11,7 +11,7 @@ build:
 		docker volume rm -f $$dirname' \;
 
 test:
-	docker run -it --rm -p 27015:27015/udp -v $(image):/home/steam/server --name $(image) $(image) $(command)
+	docker run -it --rm -p 27015:27015/udp $(options) -v $(image):/home/steam/server --name $(image) $(image) $(command)
 
 push:
 	find $(files) -maxdepth 1 -type d -exec \
