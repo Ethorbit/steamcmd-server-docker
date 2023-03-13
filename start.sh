@@ -3,7 +3,7 @@ umask "$UMASK"
 
 # Copy all files/dirs baked inside the server image into the server volume
 # If the file/dir already exists, it won't make its way to the volume.
-find "$IMAGE_DIR/" -exec /bin/bash -c "cp -nar {} '$SERVER_DIR/'" \;
+find "$IMAGE_DIR/" -mindepth 1 -maxdepth 1 -exec /bin/bash -c "cp -nar {} '$SERVER_DIR/'" \;
 
 # Create defaults for scripts that are not baked into the server image
 if [[ ! -f "$SERVER_DIR/$STEAMCMD_UPDATE_SCRIPT" ]]; then
