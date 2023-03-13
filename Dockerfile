@@ -11,7 +11,7 @@ ENV SERVER_DIR="${HOMEDIR}/server"
 # IMAGE_DIR are files that are moved into SERVER_DIR at runtime
 # The purpose of it is for baking custom start/update scripts into your 
 # images and having them still appear in the server/ volume.
-ENV IMAGE_DIR="${HOMEDIR}/image"
+ENV IMAGE_DIR="/image"
 # For referencing inside server scripts in conjunction with IMAGE_DIR / SERVER_DIR. 
 # This just allows us to give them different names in the future.
 ENV STEAMCMD_UPDATE_SCRIPT="steam_update.txt"
@@ -25,7 +25,9 @@ RUN usermod -u ${PUID} ${USER} &&\
     groupmod -g ${PGID} ${USER} &&\
     chown ${USER}:${USER} /start.sh &&\
     chmod +x /start.sh &&\
+    mkdir "${IMAGE_DIR}" &&\
     mkdir "${SERVER_DIR}" &&\
+    chown ${USER}:${USER} "${IMAGE_DIR}" &&\
     chown ${USER}:${USER} "${SERVER_DIR}"
 WORKDIR "${SERVER_DIR}"
 USER ${USER}
