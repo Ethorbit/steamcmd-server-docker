@@ -1,9 +1,9 @@
 FROM steamcmd-server
 USER root
 ENV APP_ID=276060
-COPY ./start.sh "${START_SCRIPT}"
-RUN chown ${USER}:${USER} "${START_SCRIPT}" &&\
-    chmod +x "${START_SCRIPT}" &&\
+COPY ./start.sh "${IMAGE_DIR}/${START_SCRIPT}"
+RUN chown ${USER}:${USER} "${IMAGE_DIR}/${START_SCRIPT}" &&\
+    chmod +x "${IMAGE_DIR}/${START_SCRIPT}" &&\
     export DEBIAN_FRONTEND=noninteractive &&\
     dpkg --add-architecture i386 &&\
     apt update &&\

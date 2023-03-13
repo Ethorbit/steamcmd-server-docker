@@ -28,6 +28,7 @@ These variables should be used whereever possible.
 * `HOME_DIR`
 * `STEAMCMD_DIR`           - where steamcmd binaries are
 * `SERVER_DIR`             - where the server installs
+* `IMAGE_DIR`              - where files baked into the server image are (like a start or update script), they are copied to SERVER\_DIR on container start
 * `STEAMCMD_UPDATE_SCRIPT` - txt update file using steamcmd update syntax
 * `UPDATE_SCRIPT`          - shell script that executes STEAMCMD\_UPDATE\_SCRIPT
 * `START_SCRIPT`           - shell script to start the game server
