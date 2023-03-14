@@ -16,7 +16,7 @@ You can also look for pre-built images [here](https://hub.docker.com/u/ethorbit)
 ## Creating new server image 
 
 ### Steps
-* Create a new game image inside servers/
+* Create a new game directory inside servers/ (this doubles as the image name)
 * Build everything: `make build`
 * Test it: `image=<name here> make test`
 * Upload changes by changing the Makefile's docker\_user to match your DockerHub username and running: `make push`
