@@ -1,0 +1,5 @@
+app_update 17520
+app_update 220
+app_update 17520 validate
+app_update 220 validate
+quit

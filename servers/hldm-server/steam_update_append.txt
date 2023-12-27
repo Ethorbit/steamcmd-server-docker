@@ -1,0 +1,7 @@
+app_update 90
+app_update 90
+app_update 90
+app_update validate 90
+app_update validate 90
+app_update validate 90
+quit

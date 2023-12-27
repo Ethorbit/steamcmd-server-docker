@@ -1,0 +1,11 @@
+app_update 17520
+app_update 220
+app_update 380
+app_update 420
+app_update 340
+app_update 17520 validate
+app_update 220 validate
+app_update 380 validate
+app_update 420 validate
+app_update 340 validate
+quit

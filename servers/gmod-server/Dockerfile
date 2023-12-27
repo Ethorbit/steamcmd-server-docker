@@ -1,6 +1,7 @@
 FROM steamcmd-server
 USER root
 ENV APP_ID=4020
+ENV SERVER_DIR="${SERVERS_DIR}/GarrysModDS"
 COPY ./start.sh "${IMAGE_DIR}/${START_SCRIPT}"
 RUN chown ${USER}:${USER} "${IMAGE_DIR}/${START_SCRIPT}" &&\
     chmod +x "${IMAGE_DIR}/${START_SCRIPT}" &&\
@@ -11,5 +12,4 @@ RUN chown ${USER}:${USER} "${IMAGE_DIR}/${START_SCRIPT}" &&\
         libncurses5:i386 &&\
     apt-get remove --purge --auto-remove -y &&\
 	rm -rf /var/lib/apt/lists/*
-VOLUME "${SERVER_DIR}"
 USER ${USER}

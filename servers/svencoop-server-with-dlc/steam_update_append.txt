@@ -1,0 +1,7 @@
+app_update 276060
+app_update 50
+app_update 130
+app_update validate 276060
+app_update validate 50
+app_update validate 130
+quit
