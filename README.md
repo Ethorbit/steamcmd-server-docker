@@ -32,6 +32,7 @@ These variables should be used whereever possible.
 * `STEAMCMD_DIR`            - where steamcmd binaries are
 * `SERVERS_DIR`             - where the server(s) that are installed go
 * `SERVER_DIR`              - the server that is going to run
+* `SHARED_DIR`              - shared directory, symlinks are automatically created to point to these files in the SERVERS\_DIR
 * `IMAGE_DIR`               - where files baked into the server image are (like a start or update script), they are copied to SERVER\_DIR on container start
 * `STEAMCMD_LOGIN_USERNAME` - the steam username of the account that owns the game
 * `STEAMCMD_UPDATE_SCRIPT`  - txt update file using steamcmd update syntax
