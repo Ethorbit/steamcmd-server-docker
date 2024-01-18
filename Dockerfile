@@ -1,4 +1,5 @@
 FROM cm2network/steamcmd
+
 USER root
 ARG PUID=1000
 ARG PGID=1000
@@ -26,6 +27,11 @@ ENV START_SCRIPT="start.sh"
 # You need to integrate these in your server images
 ENV APP_ID=
 ENV SERVER_DIR=
+# Allows servers of the same game to have a 'shared' directory
+# Simply bind mount a directory with the same game folder structure to container's /shared 
+# Any files in /shared that don't exist in server will get copied over as a symlink
+# Symlinks will be auto deleted if they point to shared files that no longer exist
+ENV SHARED_DIR=/shared
 ENV START_ARGS=
 COPY /start.sh /start.sh
 RUN usermod -u ${PUID} ${USER} &&\
