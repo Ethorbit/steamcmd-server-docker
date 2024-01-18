@@ -63,7 +63,7 @@ if [ ! -f "${SERVERS_DIR}/.server_installed_successfully" ]; then
     fi 
 fi
 
-# Merge any shared files
+echo "Merging shared files.."
 cp --preserve=timestamp -dRns "${SHARED_DIR}/"* "${SERVERS_DIR}/"
 
 start_server
