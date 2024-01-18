@@ -1,4 +1,5 @@
 FROM cm2network/steamcmd
+LABEL maintainer="Ethorbit"
 
 USER root
 ARG PUID=1000
