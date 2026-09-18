@@ -2,7 +2,7 @@
 [![issues](https://img.shields.io/github/issues/Ethorbit/steamcmd-server-docker)](https://github.com/Ethorbit/steamcmd-server-docker/issues?q=is%3Aopen+is%3Aissue)
 
 # steamcmd-server
-[A Docker image](Dockerfile) based on [steamcmd](https://github.com/CM2Walki/steamcmd) designed for self-installing game servers. [Server images](servers) can have their own App ID, start and update scripts. 
+[A Docker image](Dockerfile) based on [steamcmd trixie](https://github.com/CM2Walki/steamcmd) designed for self-installing game servers. [Server images](servers) can have their own App ID, start and update scripts. 
 
 See the [existing implementations](servers)
 

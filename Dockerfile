@@ -1,4 +1,4 @@
-FROM cm2network/steamcmd
+FROM cm2network/steamcmd:steam-trixie
 LABEL maintainer="Ethorbit"
 
 USER root
