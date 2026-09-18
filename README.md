@@ -8,6 +8,7 @@ See the [existing implementations](servers)
 
 ## Creating container from [existing server image](servers)
 `make build`
+(or `image=name make build-one` if you only want to build a single image)
 
 `docker run -it --rm -e START_ARGS="" -p 27015:27015/tcp -p 27015:27015/udp -v myserver:/home/steam/Steam/steamapps/common <server image>`
 
